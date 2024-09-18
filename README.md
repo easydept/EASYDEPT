@@ -1,4 +1,4 @@
-## Hi there 👋
+## EasyDept 2024
 
 <!--
 **easydept/easydept** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
