@@ -1,13 +1,15 @@
 package com.easydept.edbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 
 @Entity
-public class Edificios {
+@Table(name = "edificios")
+
+public class Edificio {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private String nombre;
 
     // Getters y Setters
@@ -27,4 +29,3 @@ public class Edificios {
         this.nombre = nombre;
     }
 }
-
