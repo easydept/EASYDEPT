@@ -8,6 +8,6 @@ public class StatusController {
 
     @GetMapping("/controllers/status")
     public String status() {
-        return "EasyDept - API, Spring Boot is running!";
+        return "EasyDept -..? API, Spring Boot is running!";
     }
 }
