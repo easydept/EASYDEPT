@@ -73,18 +73,18 @@ const Inicio = () => {
                 <div className="relative">
                   <input
                     type="password"
-                    name="password"
-                    value={formData.password}
+                    name="contraseña"
+                    value={formData.contraseña}
                     onChange={handleChange}
-                    id="password"
+                    id="contraseña"
                     className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
                     autoComplete="current-password"
                     placeholder=" "
                   />
                   <label
-                    htmlFor="password"
+                    htmlFor="contraseña"
                     className={`absolute top-2 left-4 text-gray-600 font-custom transition-transform transform text-base origin-left ${
-                      formData.password
+                      formData.contraseña
                         ? "-translate-y-10 text-custom-green"
                         : "peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400"
                     }`}
