@@ -8,7 +8,7 @@ public class Edificio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_edificio")
-    private Integer idEdificio;
+    private int idEdificio;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -26,7 +26,7 @@ public class Edificio {
     private Integer cantidadPisos;
 
     @Column(name = "cantidad_unidades_piso", nullable = false)
-    private Integer cantidadUnidadesPiso;
+    private int cantidadUnidadesPiso;
 
     @ManyToOne
     @JoinColumn(name = "id_administrador", nullable = false)
@@ -38,7 +38,7 @@ public class Edificio {
 
     // Constructor completo
     public Edificio(String nombre, String direccion, String ciudad, String pais,
-                    Integer cantidadPisos, Integer cantidadUnidadesPiso, Usuario administrador) {
+                    Integer cantidadPisos, int cantidadUnidadesPiso, Usuario administrador) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -49,11 +49,11 @@ public class Edificio {
     }
 
     // Getters y setters
-    public Integer getIdEdificio() {
+    public int getIdEdificio() {
         return idEdificio;
     }
 
-    public void setIdEdificio(Integer idEdificio) {
+    public void setIdEdificio(int idEdificio) {
         this.idEdificio = idEdificio;
     }
 
@@ -97,11 +97,11 @@ public class Edificio {
         this.cantidadPisos = cantidadPisos;
     }
 
-    public Integer getCantidadUnidadesPorPiso() {
+    public int getCantidadUnidadesPiso() {
         return cantidadUnidadesPiso;
     }
 
-    public void setCantidadUnidadesPorPiso(Integer cantidadUnidadesPorPiso) {
+    public void setCantidadUnidadesPiso(int cantidadUnidadesPorPiso) {
         this.cantidadUnidadesPiso = cantidadUnidadesPorPiso;
     }
 

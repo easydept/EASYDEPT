@@ -10,7 +10,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private Integer idUsuario;
+    private int idUsuario;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -40,13 +40,13 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
     // Getters y setters
-    public Integer getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+public void setIdUsuario(int idUsuario) {
+    this.idUsuario = idUsuario;
+}
 
     public String getNombre() {
         return nombre;

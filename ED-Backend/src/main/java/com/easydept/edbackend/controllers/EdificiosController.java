@@ -5,6 +5,7 @@ import com.easydept.edbackend.services.EdificiosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/edificios")
@@ -18,7 +19,7 @@ public class EdificiosController {
         return edificiosService.saveEdificio(edificio);
     }
     @GetMapping
-    public ArrayList<Edificio> getEdificios() {
+    public List<Edificio> getEdificios() {
         return this.edificiosService.getAllEdificios();
     }
 
