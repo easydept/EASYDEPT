@@ -27,5 +27,3 @@ public class EdificiosService {
         return edificiosRepository.save(edificio);
     }
 }
-
-
