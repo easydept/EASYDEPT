@@ -22,6 +22,18 @@ public class PermisoInquilino {
     @JoinColumn(name = "id_departamento", nullable = false)
     private Departamento departamento;
 
+
+    // Constructor por defecto
+    public PermisoInquilino() {
+    }
+
+    // Constructor completo
+    public PermisoInquilino(Permiso permiso, Usuario inquilino, Departamento departamento) {
+        this.permiso = permiso;
+        this.inquilino = inquilino;
+        this.departamento = departamento;
+    }
+
     // Getters y setters
     public Integer getIdPermisoInquilino() {
         return idPermisoInquilino;

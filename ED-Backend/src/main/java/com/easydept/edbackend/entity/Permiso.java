@@ -13,6 +13,15 @@ public class Permiso {
     @Column(name = "nombre", nullable = false, unique = true)
     private String nombre;
 
+    // Constructor por defecto
+    public Permiso() {
+    }
+
+    // Constructor completo
+    public Permiso(String nombre) {
+        this.nombre = nombre;
+    }
+
     // Getters y setters
     public Integer getIdPermiso() {
         return idPermiso;

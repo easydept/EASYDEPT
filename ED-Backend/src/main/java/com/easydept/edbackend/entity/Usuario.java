@@ -27,6 +27,18 @@ public class Usuario {
     @Column(name = "fecha_nacimiento", nullable = false)
     private Date fechaNacimiento;
 
+    // Constructor por defecto
+    public Usuario() {
+    }
+
+    // Constructor completo
+    public Usuario(String nombre, String apellido, String email, String password, Date fechaNacimiento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.fechaNacimiento = fechaNacimiento;
+    }
     // Getters y setters
     public Integer getIdUsuario() {
         return idUsuario;

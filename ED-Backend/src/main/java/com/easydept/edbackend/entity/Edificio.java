@@ -32,6 +32,22 @@ public class Edificio {
     @JoinColumn(name = "id_administrador", nullable = false)
     private Usuario administrador;
 
+    // Constructor por defecto
+    public Edificio() {
+    }
+
+    // Constructor completo
+    public Edificio(String nombre, String direccion, String ciudad, String pais,
+                    Integer cantidadPisos, Integer cantidadUnidadesPiso, Usuario administrador) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.pais = pais;
+        this.cantidadPisos = cantidadPisos;
+        this.cantidadUnidadesPiso = cantidadUnidadesPiso;
+        this.administrador = administrador;
+    }
+
     // Getters y setters
     public Integer getIdEdificio() {
         return idEdificio;

@@ -29,6 +29,19 @@ public class Departamento {
     @JoinColumn(name = "id_inquilino")
     private Usuario inquilino;
 
+    // Constructor por defecto
+    public Departamento() {
+    }
+
+    // Constructor completo
+    public Departamento(Edificio edificio, String unidad, Integer numeroPiso, Usuario propietario, Usuario inquilino) {
+        this.edificio = edificio;
+        this.unidad = unidad;
+        this.numeroPiso = numeroPiso;
+        this.propietario = propietario;
+        this.inquilino = inquilino;
+    }
+
     // Getters y setters
     public Integer getIdDepartamento() {
         return idDepartamento;

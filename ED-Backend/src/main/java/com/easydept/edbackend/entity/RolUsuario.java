@@ -18,6 +18,16 @@ public class RolUsuario {
     @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
 
+    // Constructor por defecto
+    public RolUsuario() {
+    }
+
+    // Constructor completo
+    public RolUsuario(Usuario usuario, Rol rol) {
+        this.usuario = usuario;
+        this.rol = rol;
+    }
+
     // Getters y setters
     public Integer getIdRolUsuario() {
         return idRolUsuario;

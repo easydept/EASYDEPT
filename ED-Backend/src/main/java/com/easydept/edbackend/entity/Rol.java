@@ -14,6 +14,15 @@ public class Rol {
     @Column(name = "nombre", nullable = false, unique = true)
     private String nombre;
 
+    // Constructor por defecto
+    public Rol() {
+    }
+
+    // Constructor completo
+    public Rol(String nombre) {
+        this.nombre = nombre;
+    }
+
     // Getters y setters
     public Integer getIdRol() {
         return idRol;
