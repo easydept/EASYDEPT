@@ -26,4 +26,19 @@ public class EdificiosService {
     public Edificio saveEdificio(Edificio edificio) {
         return edificiosRepository.save(edificio);
     }
+
+    @Transactional
+    public void deleteEdificio(Integer idEdificio) {
+        if (edificiosRepository.existsById(idEdificio)) {
+            edificiosRepository.deleteById(idEdificio);
+        } else {
+            throw new RuntimeException("Edificio no encontrado con ID: " + idEdificio);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public Edificio getEdificioById(Integer idEdificio) {
+        return edificiosRepository.findById(idEdificio)
+                .orElseThrow(() -> new RuntimeException("Edificio no encontrado con ID: " + idEdificio));
+    }
 }

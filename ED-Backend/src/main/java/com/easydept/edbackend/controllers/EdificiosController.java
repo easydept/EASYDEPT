@@ -4,6 +4,7 @@ import com.easydept.edbackend.entity.Edificio;
 import com.easydept.edbackend.services.EdificiosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,15 @@ public class EdificiosController {
         return this.edificiosService.getAllEdificios();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEdificio(@PathVariable Integer id) {
+        edificiosService.deleteEdificio(id);
+        return ResponseEntity.noContent().build(); // Devuelve un 204 No Content
+    }
 
-    // Otros endpoints si es necesario
+    @GetMapping("/{id}")
+    public Edificio getEdificioById(@PathVariable Integer id) {
+        return edificiosService.getEdificioById(id);
+    }
+
 }
