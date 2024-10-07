@@ -74,19 +74,20 @@ const Registro = () => {
     <div className="bg-white relative lg:py-6">
       <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto w-full h-[750px] max-w-[1400px] xl:px-5 lg:flex-row">
         <div className="flex flex-col w-full pt-0 pr-10 pb-0 pl-10 lg:pt-0">
-          <div className="w-full">
+          <div className="w-full font-montserrat">
             <form
               onSubmit={handleSubmit}
               className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6 pr-6 pb-6 pl-6 bg-white bg-opacity-90 shadow-2xl rounded-xl relative z-10"
               autoComplete="off"
             >
-              <p className="col-span-2 w-full text-2xl font-custom text-center leading-snug text-custom-green">
+              <p className="col-span-2 w-full text-2xl text-center leading-snug text-custom-green">
                 Crea una cuenta
               </p>
               {/* Mostrar mensaje de error */}
               {error && (
-                <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm font-custom text-center text-red-500 bg-white border border-red-500 rounded-md">
-                  {error}</p>
+                <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-red-500 bg-white border border-red-500 rounded-md">
+                  {error}
+                </p>
               )}
 
               {/* Campo Nombre */}
@@ -103,7 +104,7 @@ const Registro = () => {
                 />
                 <label
                   htmlFor="nombre"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Nombre
                 </label>
@@ -123,7 +124,7 @@ const Registro = () => {
                 />
                 <label
                   htmlFor="apellido"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Apellido
                 </label>
@@ -143,7 +144,7 @@ const Registro = () => {
                 />
                 <label
                   htmlFor="fechaNacimiento"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Fecha de nacimiento
                 </label>
@@ -163,7 +164,7 @@ const Registro = () => {
                 />
                 <label
                   htmlFor="email"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Email
                 </label>
@@ -183,7 +184,7 @@ const Registro = () => {
                 />
                 <label
                   htmlFor="password"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Contraseña
                 </label>
@@ -203,7 +204,7 @@ const Registro = () => {
                 />
                 <label
                   htmlFor="passwordConfirmar"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Confirmar contraseña
                 </label>
@@ -225,7 +226,7 @@ const Registro = () => {
                 </select>
                 <label
                   htmlFor="rol"
-                  className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
+                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
                   Selecciona un rol
                 </label>
@@ -235,14 +236,14 @@ const Registro = () => {
               <div className="relative col-span-2">
                 <button
                   type="submit"
-                  className="w-full inline-block pt-2 pr-4 pb-2 pl-4 text-lg font-custom text-center text-white bg-custom-green rounded-md transition duration-200 hover:bg-custom-green-dark"
+                  className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-102"
                 >
                   Registrarse
                 </button>
                 <button
                   type="button"
                   onClick={handleCreateAccount}
-                  className="w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm font-custom text-center text-custom-green bg-white border border-custom-green rounded-md transition duration-200 hover:bg-custom-green hover:text-white"
+                  className="w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-custom-green bg-white border border-custom-green rounded-md transition duration-200 hover:bg-custom-green hover:text-white"
                 >
                   ¿Ya tienes cuenta? Inicia sesión aquí
                 </button>

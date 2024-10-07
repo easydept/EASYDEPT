@@ -46,22 +46,22 @@ const Inicio = () => {
               <img
                 src="logo.png"
                 alt="Logo"
-                className="w-96 h-auto transition duration-500 ease-in-out transform hover:scale-105"
+                className="w-3/4 h-auto transition duration-500 ease-in-out transform hover:scale-130"
               />
             </div>
           </div>
-          <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
+          <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12 font-montserrat">
             <form
               onSubmit={handleSubmit}
               className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white bg-opacity-90 shadow-2xl rounded-xl relative z-10"
             >
-              <p className="w-full text-3xl font-custom text-center leading-snug text-custom-green">
+              <p className="w-full text-3xl text-center leading-snug text-custom-green">
                 Iniciar sesión
               </p>
 
               {/* Mensaje de error */}
               {error && (
-                <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm font-custom text-center text-red-500 bg-white border border-red-500 rounded-md">
+                <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-red-500 bg-white border border-red-500 rounded-md">
                   {error}</p>
               )}
 
@@ -79,7 +79,7 @@ const Inicio = () => {
                   />
                   <label
                     htmlFor="email"
-                    className={`absolute top-2 left-4 text-gray-600 font-custom transition-transform transform text-base origin-left ${
+                    className={`absolute top-2 left-4 text-gray-600 transition-transform transform text-base origin-left ${
                       formData.email
                         ? "-translate-y-10 text-custom-green"
                         : "peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400"
@@ -101,7 +101,7 @@ const Inicio = () => {
                   />
                   <label
                     htmlFor="password"
-                    className={`absolute top-2 left-4 text-gray-600 font-custom transition-transform transform text-base origin-left ${
+                    className={`absolute top-2 left-4 text-gray-600 transition-transform transform text-base origin-left ${
                       formData.password
                         ? "-translate-y-10 text-custom-green"
                         : "peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400"
@@ -127,7 +127,7 @@ const Inicio = () => {
                   </select>
                   <label
                     htmlFor="rol"
-                    className="absolute top-2 left-2 text-gray-600 font-custom transition-transform transform text-base origin-left -translate-y-8 text-custom-green"
+                    className="absolute top-1 left-2 text-gray-600 transition-transform transform text-base origin-left -translate-y-8 text-custom-green"
                   >
                     Selecciona el rol con el que quieres acceder
                   </label>
@@ -135,7 +135,7 @@ const Inicio = () => {
                 <div className="relative">
                   <button
                     type="submit"
-                    className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-custom text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-105"
+                    className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-105"
                   >
                     Iniciar sesión
                   </button>
@@ -144,7 +144,7 @@ const Inicio = () => {
               <button
                 type="button"
                 onClick={handleCreateAccount}
-                className="w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm font-custom text-center text-custom-green bg-white border border-custom-green rounded-md transition duration-200 hover:bg-custom-green hover:text-white"
+                className="w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-custom-green bg-white border border-custom-green rounded-md transition duration-200 hover:bg-custom-green hover:text-white"
               >
                 Crear cuenta
               </button>

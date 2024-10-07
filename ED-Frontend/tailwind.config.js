@@ -7,7 +7,12 @@ export default {
         'custom-green': '#004d29',
       },
       fontFamily: {
-        custom: "Montserrat"
+        montserrat: "Montserrat"
+      },
+      scale: {
+        '101': '1.01',
+        '102': '1.02',
+        '130': '1.30',
       }
       
     },
