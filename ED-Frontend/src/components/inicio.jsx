@@ -34,6 +34,7 @@ const Inicio = () => {
 
     setError(""); // Resetea el error si todo está correcto
     console.log("Form Data:", formData);
+    navigate("/navbar");
     // Aquí podrías agregar la lógica para la autenticación del usuario
   };
 
