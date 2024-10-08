@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
           className="hover:bg-green-700 p-2 rounded"
           onClick={() => setSelectedComponent(<BasicForm2 />)} // Reemplaza Component2 con el componente real
         >
-          Opción 2
+          Mis Reclamos
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
