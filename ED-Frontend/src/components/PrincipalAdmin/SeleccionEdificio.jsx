@@ -1,34 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import { getEdificios } from '../../services/edificios.service.js';
 
-const buildingsData = [
-    {
-        id: 1,
-        name: 'Edificio 1',
-        address: 'Calle Falsa 123',
-        image: 'ed1.jpg', 
-    },
-    {
-        id: 2,
-        name: 'Edificio 2',
-        address: 'Avenida Siempre Viva 742',
-        image: 'ed2.jpg', 
-    },
-    {
-        id: 3,
-        name: 'Edificio 3',
-        address: 'Boulevard de los Sueños Rotos 456',
-        image: 'ed3.jpg', 
-    },
-    // Agrega más edificios según sea necesario
-];
 
-const BasicForm = () => {
+const SeleccionEdificio = () => {
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         responsive: [
             {
@@ -36,7 +16,7 @@ const BasicForm = () => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    infinite: true,
+                    infinite: false,
                 },
             },
             {
@@ -48,18 +28,31 @@ const BasicForm = () => {
             },
         ],
     };
+    
+    const [edificios, setEdificios] = useState([]);
+
+    const fetchEdificios = async () => {
+        const data = await getEdificios();
+        console.log(data)
+        setEdificios(data);
+    };
+
+    useEffect(() => {
+        fetchEdificios();
+      }, []);
+
 
     return (
         <div className="container mx-auto p-5">
             <h2 className="text-2xl font-bold text-center mb-5">Edificios administrados por "usr"</h2>
             <Slider {...settings}>
-                {buildingsData.map(building => (
-                    <div key={building.id} className="p-4">
+                {edificios.map(edificio => (
+                    <div key={edificio.idEdificio} className="p-4">
                         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src={building.image} alt={building.name} className="w-full h-48 object-cover" />
+                            <img src={edificio.fotoUrl} alt={edificio.nombre} className="w-full h-48 object-cover" />
                             <div className="p-4">
-                                <h3 className="text-lg font-semibold">{building.name}</h3>
-                                <p className="text-gray-600">{building.address}</p>
+                                <h3 className="text-lg font-semibold">{edificio.nombre}</h3>
+                                <p className="text-gray-600">{edificio.direccion}</p>
                             </div>
                         </div>
                     </div>
@@ -74,4 +67,4 @@ const BasicForm = () => {
     );
 };
 
-export default BasicForm;
+export default SeleccionEdificio;

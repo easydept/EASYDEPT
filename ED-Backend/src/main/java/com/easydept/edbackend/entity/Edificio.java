@@ -28,6 +28,9 @@ public class Edificio {
     @Column(name = "cantidad_unidades_piso", nullable = false)
     private int cantidadUnidadesPiso;
 
+    @Column(name = "foto_url")
+    private String fotoUrl;
+
     @ManyToOne
     @JoinColumn(name = "id_administrador", nullable = false)
     private Usuario administrador;
@@ -38,7 +41,7 @@ public class Edificio {
 
     // Constructor completo
     public Edificio(String nombre, String direccion, String ciudad, String pais,
-                    Integer cantidadPisos, int cantidadUnidadesPiso, Usuario administrador) {
+                    Integer cantidadPisos, int cantidadUnidadesPiso, Usuario administrador, String fotoUrl) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -46,6 +49,7 @@ public class Edificio {
         this.cantidadPisos = cantidadPisos;
         this.cantidadUnidadesPiso = cantidadUnidadesPiso;
         this.administrador = administrador;
+        this.fotoUrl = fotoUrl;
     }
 
     // Getters y setters
@@ -87,6 +91,14 @@ public class Edificio {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
     }
 
     public Integer getCantidadPisos() {

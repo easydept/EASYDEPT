@@ -1,6 +1,5 @@
 import React from "react";
-import BasicForm from "./BasicForm"; 
-import BasicForm2 from "./BasicForm2"; 
+import SeleccionEdificio from "./SeleccionEdificio"; 
 
 const Sidebar = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   return (
@@ -13,15 +12,15 @@ const Sidebar = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
       <ul className="space-y-2">
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<BasicForm />)} // Cambia a BasicForm
+          onClick={() => setSelectedComponent(<SeleccionEdificio />)} // Cambia a BasicForm
         >
           Mis edificios
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<BasicForm2 />)} // Reemplaza Component2 con el componente real
+          onClick={() => setSelectedComponent(<Component2 />)} // Reemplaza Component2 con el componente real
         >
-          Mis Reclamos
+          Opcion 2
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"

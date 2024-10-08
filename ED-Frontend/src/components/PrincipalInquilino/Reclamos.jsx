@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as emailjs from 'emailjs-com';
 
-const BasicForm2 = () => {
+const Reclamos = () => {
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
@@ -107,4 +107,4 @@ const BasicForm2 = () => {
     );
 };
 
-export default BasicForm2;
+export default Reclamos;

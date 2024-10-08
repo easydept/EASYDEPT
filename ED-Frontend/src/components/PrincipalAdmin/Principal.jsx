@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import BasicForm from './BasicForm'; // Asegúrate de que BasicForm esté importado
+import BasicForm from './SeleccionEdificio'; // Asegúrate de que BasicForm esté importado
 
 const Principal = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Inicializar como true
