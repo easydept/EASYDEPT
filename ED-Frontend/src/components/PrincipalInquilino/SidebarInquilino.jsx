@@ -1,7 +1,6 @@
 import React from "react";
-import SeleccionEdificio from "./SeleccionEdificio"; 
-
-const Sidebar = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
+import Reclamos from "./Reclamos";
+const SidebarInquilino = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   return (
     <aside
       className={`bg-custom-green font-montserrat text-white h-3/4 w-64 p-6 transition-transform duration-500 fixed top-24 left-5 z-20 shadow-lg rounded-lg ${
@@ -12,15 +11,15 @@ const Sidebar = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
       <ul className="space-y-2">
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<SeleccionEdificio />)} // Cambia a BasicForm
+          onClick={() => setSelectedComponent(<Component1 />)} // Cambia a BasicForm
         >
-          Mis edificios
+          Soy un inquilino
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component2 />)} // Reemplaza Component2 con el componente real
+          onClick={() => setSelectedComponent(<Reclamos />)} // Reemplaza Component2 con el componente real
         >
-          Opcion 2
+          Reclamos
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
@@ -39,4 +38,4 @@ const Sidebar = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   );
 };
 
-export default Sidebar;
+export default SidebarInquilino;

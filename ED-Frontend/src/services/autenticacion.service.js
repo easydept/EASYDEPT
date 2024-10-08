@@ -1,10 +1,13 @@
-// import axios from "axios";
 
 // const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('usuario'));
 
-// const doLogin = async (login) => {
-//     const response = await axios.post("http://localhost:3001/api/auth/login", login)
-//     return response.data
-// };
+import axios from "axios";
 
-// export default { doLogin };
+export const autenticarUsuario = async (usuario) => {
+    const response = await axios.post("http://localhost:8080/autenticacion/login", usuario)
+    return response.data
+}
+
+
+
+

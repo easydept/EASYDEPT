@@ -7,6 +7,7 @@ import com.easydept.edbackend.repositories.RolesRepository;
 import com.easydept.edbackend.repositories.RolesUsuariosRepository; // Asegúrate de importar el repositorio adecuado
 import com.easydept.edbackend.repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,12 +19,14 @@ public class UsuariosService {
     private final UsuariosRepository usuariosRepository;
     private final RolesUsuariosRepository rolesUsuariosRepository; // Incluir el repositorio para roles
     private final RolesRepository rolesRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuariosService(UsuariosRepository usuariosRepository, RolesUsuariosRepository rolesUsuariosRepository, RolesRepository rolesRepository) {
+    public UsuariosService(UsuariosRepository usuariosRepository, RolesUsuariosRepository rolesUsuariosRepository, RolesRepository rolesRepository, BCryptPasswordEncoder passwordEncoder) {
         this.usuariosRepository = usuariosRepository;
         this.rolesUsuariosRepository = rolesUsuariosRepository;
         this.rolesRepository = rolesRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Usuario> getAllUsuarios() {
@@ -32,6 +35,8 @@ public class UsuariosService {
 
     @Transactional
     public Usuario saveUsuario(Usuario usuario) {
+        String encryptedPassword = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(encryptedPassword);
         return usuariosRepository.save(usuario);
     }
 

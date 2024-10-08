@@ -1,5 +1,6 @@
 package com.easydept.edbackend.controllers;
 
+import com.easydept.edbackend.dtos.LoginRequest;
 import com.easydept.edbackend.entity.Usuario;
 import com.easydept.edbackend.services.AutenticacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class AutenticacionController {
     private AutenticacionService autenticacionService;
 
     @PostMapping("/login")
-    public Usuario login(@RequestParam String email, @RequestParam String password, @RequestParam String rol) {
-        return autenticacionService.login(email, password, rol);
+    public Usuario login(@RequestBody LoginRequest loginRequest) {
+        return autenticacionService.login(loginRequest.getEmail(), loginRequest.getPassword(), loginRequest.getRol());
     }
 }

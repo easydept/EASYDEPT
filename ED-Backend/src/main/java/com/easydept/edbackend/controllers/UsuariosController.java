@@ -20,6 +20,7 @@ public class UsuariosController {
 
     @PostMapping
     public Usuario createUsuario(@RequestBody Usuario usuario) {
+        
         return usuariosService.saveUsuario(usuario);
     }
     @GetMapping

@@ -19,6 +19,7 @@ public class SecurityConfig {
                                 .requestMatchers("/controllers/status").permitAll()
                                 .requestMatchers("/edificios").permitAll() // Permitir acceso sin autenticación
                                 .requestMatchers("/autenticacion").permitAll()
+                                .requestMatchers("/autenticacion/**").permitAll()
                                 .requestMatchers("/departamentos").permitAll()
                                 .requestMatchers("/permisos").permitAll()
                                 .requestMatchers("/permisos/inquilinos").permitAll()

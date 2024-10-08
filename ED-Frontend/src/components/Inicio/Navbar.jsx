@@ -1,5 +1,5 @@
 import React from 'react';
-
+import logo from '/logoVerde.png';
 const Navbar = ({ toggleSidebar }) => {
     return (
         <nav className="bg-white text-white fixed top-0 left-5 right-0 z-10 flex items-center">
@@ -20,7 +20,7 @@ const Navbar = ({ toggleSidebar }) => {
             {/* Contenedor para el logo */}
             <div className="flex items-center">
                 <img
-                    src="logoVerde.png" // Usa la variable de importación para la imagen
+                    src={logo} // Usa la variable de importación para la imagen
                     alt="Logo"
                     className="h-20" // Añade margen izquierdo para separación
                 />

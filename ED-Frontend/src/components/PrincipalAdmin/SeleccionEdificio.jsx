@@ -30,6 +30,7 @@ const SeleccionEdificio = () => {
     };
     
     const [edificios, setEdificios] = useState([]);
+    const [nombreAdmin, setNombreAdmin] = useState("")
 
     const fetchEdificios = async () => {
         const data = await getEdificios();
@@ -39,12 +40,15 @@ const SeleccionEdificio = () => {
 
     useEffect(() => {
         fetchEdificios();
+        const nombre= sessionStorage.getItem('nombre');
+        const apellido= sessionStorage.getItem('apellido');
+        setNombreAdmin(nombre + " " + apellido)
       }, []);
 
 
     return (
         <div className="container mx-auto p-5">
-            <h2 className="text-2xl font-bold text-center mb-5">Edificios administrados por "usr"</h2>
+            <h2 className="text-2xl font-bold text-center mb-5">Edificios administrados por {nombreAdmin}</h2>
             <Slider {...settings}>
                 {edificios.map(edificio => (
                     <div key={edificio.idEdificio} className="p-4">

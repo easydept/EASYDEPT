@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Inicio from './components/Inicio/Inicio.jsx'
 import Registro from './components/Inicio/Registro.jsx';
-import Principal from './components/PrincipalAdmin/Principal.jsx';
-
+import PrincipalAdministrador from './components/PrincipalAdmin/PrincipalAdministrador.jsx';
+import PrincipalInquilino from './components/PrincipalInquilino/PrincipalInquilino.jsx';
+import PrincipalPropietario from './components/PrincipalPropietario/PrincipalPropietario.jsx';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/home" element={<Principal />} />
+        <Route path="/home/administrador" element={<PrincipalAdministrador />} />
+        <Route path="/home/propietario" element={<PrincipalPropietario />} />
+        <Route path="/home/inquilino" element={<PrincipalInquilino />} />
       </Routes>
     </Router>
   );

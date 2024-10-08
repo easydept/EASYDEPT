@@ -1,42 +1,70 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { autenticarUsuario } from "../../services/autenticacion.service.js"
 
 const Inicio = () => {
-  const [formData, setFormData] = useState({
+  const [formInicio, setformInicio] = useState({
     email: "",
     password: "",
     rol: "",
-  });
+  })
 
-  const [error, setError] = useState(""); // Estado para manejar mensajes de error
-  const navigate = useNavigate();
+  const [error, setError] = useState("") // Estado para manejar mensajes de error
+  const navigate = useNavigate()
 
   const handleCreateAccount = () => {
-    navigate("/registro");
-  };
+    navigate("/registro")
+  }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    const { name, value } = e.target
+    setformInicio({
+      ...formInicio,
       [name]: value,
-    });
-  };
+    })
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
     // Validaciones de campos
-    if (!formData.email || !formData.password || !formData.rol) {
-      setError("Por favor, completa todos los campos.");
-      return;
+    if (!formInicio.email || !formInicio.password || !formInicio.rol) {
+      setError("Por favor, completa todos los campos.")
+      return
     }
-
-    setError(""); // Resetea el error si todo está correcto
-    console.log("Form Data:", formData);
-    navigate("/home");
-    // Aquí podrías agregar la lógica para la autenticación del usuario
-  };
+    setError("") // Resetea el error si todo está correcto
+    console.log("Form Data:", formInicio)
+    try {
+      let autenticacionUsuario = await autenticarUsuario(formInicio)
+      if (autenticacionUsuario === "") {
+        setError("Las credenciales ingresadas no son validas")
+      } else {
+        sessionStorage.setItem("idUsuario", autenticacionUsuario.idUsuario)
+        sessionStorage.setItem("nombre", autenticacionUsuario.nombre)
+        sessionStorage.setItem("apellido", autenticacionUsuario.apellido)
+        sessionStorage.setItem("rol", formInicio.rol)
+        switch (formInicio.rol) {
+          case "Administrador":
+            navigate("/home/administrador")
+            return;
+          case "Propietario":
+            navigate("/home/propietario")
+            return;
+          case "Inquilino":
+            navigate("/home/inquilino")
+            return;
+          default:
+            setError("Rol no válido.");
+            break;
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      setError(
+        "Ocurrió un error al intentar iniciar sesión. Inténtalo de nuevo."
+      )
+    }
+  }
 
   return (
     <div className="bg-white relative lg:py-6">
@@ -63,7 +91,8 @@ const Inicio = () => {
               {/* Mensaje de error */}
               {error && (
                 <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-red-500 bg-white border border-red-500 rounded-md">
-                  {error}</p>
+                  {error}
+                </p>
               )}
 
               <div className="w-full mt-6 space-y-11">
@@ -71,7 +100,7 @@ const Inicio = () => {
                   <input
                     type="email"
                     name="email"
-                    value={formData.email}
+                    value={formInicio.email}
                     onChange={handleChange}
                     id="email"
                     className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
@@ -81,7 +110,7 @@ const Inicio = () => {
                   <label
                     htmlFor="email"
                     className={`absolute top-2 left-4 text-gray-600 transition-transform transform text-base origin-left ${
-                      formData.email
+                      formInicio.email
                         ? "-translate-y-10 text-custom-green"
                         : "peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400"
                     }`}
@@ -93,7 +122,7 @@ const Inicio = () => {
                   <input
                     type="password"
                     name="password"
-                    value={formData.password}
+                    value={formInicio.password}
                     onChange={handleChange}
                     id="password"
                     className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
@@ -103,7 +132,7 @@ const Inicio = () => {
                   <label
                     htmlFor="password"
                     className={`absolute top-2 left-4 text-gray-600 transition-transform transform text-base origin-left ${
-                      formData.password
+                      formInicio.password
                         ? "-translate-y-10 text-custom-green"
                         : "peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400"
                     }`}
@@ -114,7 +143,7 @@ const Inicio = () => {
                 <div className="relative">
                   <select
                     name="rol"
-                    value={formData.rol}
+                    value={formInicio.rol}
                     onChange={handleChange}
                     id="rol"
                     className="peer border border-gray-300 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
@@ -154,7 +183,7 @@ const Inicio = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Inicio;
+export default Inicio
