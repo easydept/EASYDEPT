@@ -6,6 +6,7 @@ import Registro from './components/Inicio/Registro.jsx';
 import PrincipalAdministrador from './components/PrincipalAdmin/PrincipalAdministrador.jsx';
 import PrincipalInquilino from './components/PrincipalInquilino/PrincipalInquilino.jsx';
 import PrincipalPropietario from './components/PrincipalPropietario/PrincipalPropietario.jsx';
+import RegistroEdificio from './components/PrincipalAdmin/RegistroEdificio.jsx';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Inicio />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/home/administrador" element={<PrincipalAdministrador />} />
+        <Route path="/edificios" element={<RegistroEdificio />} />
         <Route path="/home/propietario" element={<PrincipalPropietario />} />
         <Route path="/home/inquilino" element={<PrincipalInquilino />} />
       </Routes>
