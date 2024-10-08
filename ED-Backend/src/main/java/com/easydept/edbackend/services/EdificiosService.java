@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EdificiosService {
@@ -18,6 +19,7 @@ public class EdificiosService {
         this.edificiosRepository = edificiosRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<Edificio> getAllEdificios() {
         return edificiosRepository.findAll();
     }
@@ -27,18 +29,16 @@ public class EdificiosService {
         return edificiosRepository.save(edificio);
     }
 
+
     @Transactional
-    public void deleteEdificio(Integer idEdificio) {
-        if (edificiosRepository.existsById(idEdificio)) {
-            edificiosRepository.deleteById(idEdificio);
-        } else {
-            throw new RuntimeException("Edificio no encontrado con ID: " + idEdificio);
-        }
+    public void deleteEdificioById(Integer id) {
+        edificiosRepository.deleteById(id);
     }
 
     @Transactional(readOnly = true)
-    public Edificio getEdificioById(Integer idEdificio) {
-        return edificiosRepository.findById(idEdificio)
-                .orElseThrow(() -> new RuntimeException("Edificio no encontrado con ID: " + idEdificio));
+    public Optional<Edificio> getEdificioById(Integer id) {
+        return edificiosRepository.findById(id);
     }
+
 }
+

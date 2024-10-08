@@ -18,6 +18,17 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers("/controllers/status").permitAll()
                                 .requestMatchers("/edificios").permitAll() // Permitir acceso sin autenticación
+                                .requestMatchers("/autenticacion").permitAll()
+                                .requestMatchers("/departamentos").permitAll()
+                                .requestMatchers("/permisos").permitAll()
+                                .requestMatchers("/permisos/inquilinos").permitAll()
+                                .requestMatchers("/roles").permitAll()
+                                .requestMatchers("/roles/usuarios").permitAll()
+                                .requestMatchers("/usuarios").permitAll()
+                                .requestMatchers("/usuarios/**").permitAll()
+                                .requestMatchers("/edificios/**").permitAll()
+                                .requestMatchers("/departamentos/**").permitAll()
+
                                 .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf.disable()); // Deshabilitar CSRF si no es necesario para tu caso

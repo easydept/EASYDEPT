@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartamentosService {
@@ -19,7 +20,7 @@ public class DepartamentosService {
         this.departamentosRepository = departamentosRepository;
         this.usuariosService = usuariosService;
     }
-
+    @Transactional(readOnly = true)
     public List<Departamento> getAllDepartamentos() {
         return departamentosRepository.findAll();
     }
@@ -29,33 +30,43 @@ public class DepartamentosService {
         return departamentosRepository.save(departamento);
     }
 
-    @Transactional
-    public Departamento asignarInquilino(Integer idDepartamento, Usuario inquilino) {
-        Departamento departamento = departamentosRepository.findByIdDepartamento(idDepartamento);
-        if (departamento != null) {
-            // Validar si el usuario tiene el rol de inquilino
-            if (usuariosService.tieneRolInquilino(inquilino)) {
-                departamento.setInquilino(inquilino);
-                return departamentosRepository.save(departamento);
-            } else {
-                throw new IllegalArgumentException("El usuario no tiene el rol de inquilino.");
-            }
-        }
-        throw new IllegalArgumentException("Departamento no encontrado.");
+    @Transactional(readOnly = true)
+    public Optional<Departamento> getDepartamentoById(Integer id) {
+        return departamentosRepository.findById(id);
     }
 
     @Transactional
-    public Departamento asignarPropietario(Integer idDepartamento, Usuario propietario) {
-        Departamento departamento = departamentosRepository.findByIdDepartamento(idDepartamento);
-        if (departamento != null) {
-            // Validar si el usuario tiene el rol de propietario
-            if (usuariosService.tieneRolPropietario(propietario)) {
-                departamento.setPropietario(propietario);
-                return departamentosRepository.save(departamento);
-            } else {
-                throw new IllegalArgumentException("El usuario no tiene el rol de propietario.");
-            }
-        }
-        throw new IllegalArgumentException("Departamento no encontrado.");
+    public void deleteDepartamentoById(Integer id) {
+        departamentosRepository.deleteById(id);
     }
+
+//    @Transactional
+//    public Departamento asignarInquilino(Integer idDepartamento, Usuario inquilino) {
+//        Departamento departamento = departamentosRepository.findByIdDepartamento(idDepartamento);
+//        if (departamento != null) {
+//            // Validar si el usuario tiene el rol de inquilino
+//            if (usuariosService.tieneRolInquilino(inquilino)) {
+//                departamento.setInquilino(inquilino);
+//                return departamentosRepository.save(departamento);
+//            } else {
+//                throw new IllegalArgumentException("El usuario no tiene el rol de inquilino.");
+//            }
+//        }
+//        throw new IllegalArgumentException("Departamento no encontrado.");
+//    }
+//
+//    @Transactional
+//    public Departamento asignarPropietario(Integer idDepartamento, Usuario propietario) {
+//        Departamento departamento = departamentosRepository.findByIdDepartamento(idDepartamento);
+//        if (departamento != null) {
+//            // Validar si el usuario tiene el rol de propietario
+//            if (usuariosService.tieneRolPropietario(propietario)) {
+//                departamento.setPropietario(propietario);
+//                return departamentosRepository.save(departamento);
+//            } else {
+//                throw new IllegalArgumentException("El usuario no tiene el rol de propietario.");
+//            }
+//        }
+//        throw new IllegalArgumentException("Departamento no encontrado.");
+//    }
 }

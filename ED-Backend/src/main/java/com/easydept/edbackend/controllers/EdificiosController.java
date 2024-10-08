@@ -5,8 +5,8 @@ import com.easydept.edbackend.services.EdificiosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/edificios")
@@ -19,20 +19,24 @@ public class EdificiosController {
     public Edificio createEdificio(@RequestBody Edificio edificio) {
         return edificiosService.saveEdificio(edificio);
     }
+
     @GetMapping
     public List<Edificio> getEdificios() {
         return this.edificiosService.getAllEdificios();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEdificio(@PathVariable Integer id) {
-        edificiosService.deleteEdificio(id);
-        return ResponseEntity.noContent().build(); // Devuelve un 204 No Content
+    @GetMapping("/{id}")
+    public ResponseEntity<Edificio> getEdificioById(@PathVariable Integer id) {
+        Optional<Edificio> edificio = edificiosService.getEdificioById(id);
+        return edificio.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}")
-    public Edificio getEdificioById(@PathVariable Integer id) {
-        return edificiosService.getEdificioById(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEdificioById(@PathVariable Integer id) {
+        edificiosService.deleteEdificioById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
+
