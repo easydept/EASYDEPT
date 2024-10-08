@@ -8,3 +8,5 @@ export const getPermisos = async () => {
 export const postPermisos = async (permiso) => {
   const response = await axios.post(`http://localhost:8080/permisos`, permiso)};
 
+
+
