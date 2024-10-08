@@ -73,17 +73,17 @@ const Registro = () => {
         console.log(usuarioCreado.message)
         setError(usuarioCreado.message)
       } else {
-      console.log("Usuario creado: ", usuarioCreado)
-      navigate("/") }
+        console.log("Usuario creado: ", usuarioCreado)
+        navigate("/")
+      }
     } catch (error) {
       setError("Error al crear la cuenta: ") // Manejar errores
     }
   }
-  
 
   return (
     <div className="bg-white relative lg:py-6">
-      <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto w-full h-[750px] max-w-[1400px] xl:px-5 lg:flex-row">
+      <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto w-full h-[670px] max-w-[1300px] xl:px-5 lg:flex-row">
         <div className="flex flex-col w-full pt-0 pr-10 pb-0 pl-10 lg:pt-0">
           <div className="w-full font-montserrat">
             <form
@@ -94,9 +94,10 @@ const Registro = () => {
               <p className="col-span-2 w-full text-2xl text-center leading-snug text-custom-green">
                 Crea una cuenta
               </p>
+
               {/* Mostrar mensaje de error */}
               {error && (
-                <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-red-500 bg-white border border-red-500 rounded-md">
+                <p className="col-span-2 w-full inline-block mt-0.1 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-red-500 bg-white border border-red-500 rounded-md">
                   {error}
                 </p>
               )}
@@ -247,7 +248,7 @@ const Registro = () => {
               <div className="relative col-span-2">
                 <button
                   type="submit"
-                  className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-102"
+                  className="w-full inline-block pt-3 pr-5 pb-3 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-102"
                 >
                   Registrarse
                 </button>
