@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom"
+
 import Slider from 'react-slick';
 import { getEdificios } from '../../services/edificios.service.js';
 
@@ -29,6 +31,8 @@ const SeleccionEdificio = () => {
         ],
     };
     
+    const navigate = useNavigate()
+
     const [edificios, setEdificios] = useState([]);
     const [nombreAdmin, setNombreAdmin] = useState("")
 
@@ -37,6 +41,10 @@ const SeleccionEdificio = () => {
         console.log(data)
         setEdificios(data);
     };
+
+    const handleCreateBuild = () => {
+        navigate("/edificios")
+      }
 
     useEffect(() => {
         fetchEdificios();
@@ -63,7 +71,8 @@ const SeleccionEdificio = () => {
                 ))}
             </Slider>
             <div className="flex justify-end mt-10"> {/* Alineación del botón a la derecha y margen superior */}
-                <button type="submit" className="bg-custom-green text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200">
+                <button type="submit" className="bg-custom-green text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200"
+                onClick={handleCreateBuild}>
                     Agregar nuevo edificio a administrar
                 </button>
             </div>

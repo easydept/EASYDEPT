@@ -1,259 +1,169 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom"
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { postEdificio } from '../../services/edificios.service';
 
 const RegistroEdificio = () => {
   const [formData, setFormData] = useState({
-    nombre: "",
-    apellido: "",
-    fechaNacimiento: "",
-    email: "",
-    password: "",
-    passwordConfirmar: "",
-    rol: "",
-  })
+    nombre: '',
+    direccion: '',
+    ciudad: '',
+    pais: '',
+    cantidadPisos: '',
+    cantidadUnidadesPiso: '',
+    fotoUrl: ''
+  });
 
-  const [error, setError] = useState("") // Estado para manejar errores
-  const navigate = useNavigate()
+
+const navigate = useNavigate()
+
+const handleCancelarRegistro = () => {
+  navigate("/home/administrador")
+}
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-    })
-  }
+    });
+  };
 
-  const handleCreateAccount = () => {
-    navigate("/")
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const {
-      nombre,
-      apellido,
-      fechaNacimiento,
-      email,
-      password,
-      passwordConfirmar,
-      rol,
-    } = formData
+    // Aquí es donde puedes agregar la lógica para enviar los datos, por ejemplo, a una API
+    const nuevoEdificio = await postEdificio(formData);
 
-    // Validación de campos
-    if (
-      !nombre ||
-      !apellido ||
-      !fechaNacimiento ||
-      !email ||
-      !password ||
-      !passwordConfirmar ||
-      !rol
-    ) {
-      setError("Todos los campos son obligatorios.")
-      return
-    }
-
-    // Validación de contraseñas
-    if (password !== passwordConfirmar) {
-      setError("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.")
-      return
-    }
-
-    // Aquí puedes agregar más validaciones, como la del email y la longitud de la contraseña
-
-    // Si todas las validaciones pasan
-    console.log("Form Data:", {
-      ...formData,
-      password: formData.password,
-    })
-    setError("") // Limpia el error si todo es correcto
-    navigate("/") // Redirigir al inicio después de crear la cuenta
+    // Limpiar formulario
+    setFormData({
+      nombre: '',
+      direccion: '',
+      ciudad: '',
+      pais: '',
+      cantidadPisos: '',
+      cantidadUnidadesPiso: '',
+      fotoUrl: ''
+    });
   }
 
   return (
-    <div className="bg-white relative lg:py-6">
-      <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto w-full h-[750px] max-w-[1400px] xl:px-5 lg:flex-row">
-        <div className="flex flex-col w-full pt-0 pr-10 pb-0 pl-10 lg:pt-0">
+        <div className="flex flex-col w-full lg:pt-0">
           <div className="w-full font-montserrat">
-            <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6 pr-6 pb-6 pl-6 bg-white bg-opacity-90 shadow-2xl rounded-xl relative z-10"
-              autoComplete="off"
-            >
-              <p className="col-span-2 w-full text-2xl text-center leading-snug text-custom-green">
-                Crea una cuenta
-              </p>
-              {/* Mostrar mensaje de error */}
-              {error && (
-                <p className="col-span-2 w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-red-500 bg-white border border-red-500 rounded-md">
-                  {error}
-                </p>
-              )}
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6 pr-6 pb-6 pl-6 bg-white bg-opacity-90 shadow-2xl rounded-xl relative z-10">
+              <p className="col-span-2 w-full text-2xl text-center leading-snug text-custom-green">Registrar Nuevo Edificio</p>
 
-              {/* Campo Nombre */}
+              {/* Campo: nombre del edificio */}
               <div className="relative">
+                <label className="block  mb-1" htmlFor="nombre">Nombre del Edificio</label>
                 <input
                   type="text"
+                  id="nombreo"
                   name="nombre"
                   value={formData.nombre}
                   onChange={handleChange}
-                  id="nombre"
-                  className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                  placeholder=""
-                  autoComplete="off"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="nombre"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Nombre
-                </label>
               </div>
 
-              {/* Campo Apellido */}
+              {/* Campo: dirección */}
               <div className="relative">
+                <label className="block text-gray-700 mb-1" htmlFor="direccion">Dirección</label>
                 <input
                   type="text"
-                  name="apellido"
-                  value={formData.apellido}
+                  id="direccion"
+                  name="direccion"
+                  value={formData.direccion}
                   onChange={handleChange}
-                  id="apellido"
-                  className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                  placeholder=""
-                  autoComplete="off"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="apellido"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Apellido
-                </label>
               </div>
 
-              {/* Campo Fecha de Nacimiento */}
+              {/* Campo: ciudad */}
               <div className="relative">
+                <label className="block text-gray-700 mb-1" htmlFor="ciudad">Ciudad</label>
                 <input
-                  type="date"
-                  name="fechaNacimiento"
-                  value={formData.fechaNacimiento}
+                  type="text"
+                  id="ciudad"
+                  name="ciudad"
+                  value={formData.ciudad}
                   onChange={handleChange}
-                  id="fechaNacimiento"
-                  className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                  placeholder=""
-                  autoComplete="off"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="fechaNacimiento"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Fecha de nacimiento
-                </label>
               </div>
 
-              {/* Campo Email */}
+              {/* Campo: país */}
               <div className="relative">
+                <label className="block text-gray-700 mb-1" htmlFor="pais">País</label>
                 <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
+                  type="text"
+                  id="pais"
+                  name="pais"
+                  value={formData.pais}
                   onChange={handleChange}
-                  id="email"
-                  className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                  placeholder=""
-                  autoComplete="off"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="email"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Email
-                </label>
               </div>
 
-              {/* Campo password */}
+              {/* Campo: cantidad de pisos */}
               <div className="relative">
+                <label className="block text-gray-700 mb-1" htmlFor="cantidadPisos">Cantidad de Pisos</label>
                 <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
+                  type="number"
+                  id="cantidadPisos"
+                  name="cantidadPisos"
+                  value={formData.cantidadPisos}
                   onChange={handleChange}
-                  id="password"
-                  className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                  placeholder=""
-                  autoComplete="off"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="password"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Contraseña
-                </label>
               </div>
 
-              {/* Campo Confirmar password */}
+              {/* Campo: cantidad de unidades */}
               <div className="relative">
+                <label className="block text-gray-700 mb-1" htmlFor="cantidadUnidadesPiso">Cantidad de Unidades</label>
                 <input
-                  type="password"
-                  name="passwordConfirmar"
-                  value={formData.passwordConfirmar}
+                  type="number"
+                  id="cantidadUnidadesPiso"
+                  name="cantidadUnidadesPiso"
+                  value={formData.cantidadUnidadesPiso}
                   onChange={handleChange}
-                  id="passwordConfirmar"
-                  className="peer border border-gray-300 placeholder-transparent focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                  placeholder=""
-                  autoComplete="off"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="passwordConfirmar"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Confirmar contraseña
-                </label>
               </div>
 
-              {/* Campo Selección de Rol */}
+              {/* Campo: URL de la foto */}
               <div className="relative col-span-2">
-                <select
-                  name="rol"
-                  value={formData.rol}
+                <label className="block text-gray-700 mb-1" htmlFor="fotoUrl">URL de la Foto</label>
+                <input
+                  type="text"
+                  id="fotoUrl"
+                  name="fotoUrl"
+                  value={formData.fotoUrl}
                   onChange={handleChange}
-                  id="rol"
-                  className="peer border border-gray-300 focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
-                >
-                  <option value="">Selecciona un rol</option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Propietario">Propietario</option>
-                  <option value="Inquilino">Inquilino</option>
-                </select>
-                <label
-                  htmlFor="rol"
-                  className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
-                >
-                  Selecciona un rol
-                </label>
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
+                />
               </div>
-
-              {/* Botón Registrarse */}
               <div className="relative col-span-2">
-                <button
-                  type="submit"
-                  className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-102"
-                >
-                  Registrarse
-                </button>
-                <button
+              <button type="submit" className="w-full inline-block pt-3 pr-5 pb-3 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-102">
+                Registrar Edificio
+              </button>
+              <button
                   type="button"
-                  onClick={handleCreateAccount}
+                  onClick={handleCancelarRegistro}
                   className="w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-custom-green bg-white border border-custom-green rounded-md transition duration-200 hover:bg-custom-green hover:text-white"
                 >
-                  ¿Ya tienes cuenta? Inicia sesión aquí
+                  Cancelar carga
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+          </div></div>
+  );
+};
 
-export default RegistroEdificio
+export default RegistroEdificio;
