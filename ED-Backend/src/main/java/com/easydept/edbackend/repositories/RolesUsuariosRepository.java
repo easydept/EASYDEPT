@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RolesUsuariosRepository extends JpaRepository<RolUsuario, Integer> {
     RolUsuario findByUsuarioAndRol(Usuario usuario, Rol rol);
+
 }

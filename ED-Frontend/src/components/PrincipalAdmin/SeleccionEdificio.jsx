@@ -47,8 +47,8 @@ const SeleccionEdificio = () => {
 
 
     return (
-        <div className="container mx-auto p-5">
-            <h2 className="text-2xl font-bold text-center mb-5">Edificios administrados por {nombreAdmin}</h2>
+        <div className="container mx-auto p-5 font-montserrat">
+            <h2 className="text-xl text-center mb-5">Edificios administrados por {nombreAdmin}</h2>
             <Slider {...settings}>
                 {edificios.map(edificio => (
                     <div key={edificio.idEdificio} className="p-4">

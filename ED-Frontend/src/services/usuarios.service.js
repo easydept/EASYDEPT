@@ -5,8 +5,9 @@ export const getUsuarios = async () => {
     return response.data
 };
 
-export const postUsuarios = async (usuario) => {
-  const response = await axios.post(`http://localhost:8080/usuarios`, usuario)
+export const postUsuarios = async (usuario, rolUsuario) => {
+  const response = await axios.post(`http://localhost:8080/usuarios?nombreRol=${rolUsuario}`, usuario)
+  return response.data
 };
 
 

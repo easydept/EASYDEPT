@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { postUsuarios } from "../../services/usuarios.service"
 
 const Registro = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Registro = () => {
     navigate("/")
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const {
       nombre,
@@ -58,17 +59,27 @@ const Registro = () => {
       setError("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.")
       return
     }
-
-    // Aquí puedes agregar más validaciones, como la del email y la longitud de la contraseña
-
-    // Si todas las validaciones pasan
-    console.log("Form Data:", {
-      ...formData,
+    const usuarioACrear = {
+      nombre: formData.nombre,
+      apellido: formData.apellido,
+      fechaNacimiento: formData.fechaNacimiento,
+      email: formData.email,
       password: formData.password,
-    })
-    setError("") // Limpia el error si todo es correcto
-    navigate("/") // Redirigir al inicio después de crear la cuenta
+    }
+    setError("")
+    try {
+      const usuarioCreado = await postUsuarios(usuarioACrear, formData.rol)
+      if (usuarioCreado.message) {
+        console.log(usuarioCreado.message)
+        setError(usuarioCreado.message)
+      } else {
+      console.log("Usuario creado: ", usuarioCreado)
+      navigate("/") }
+    } catch (error) {
+      setError("Error al crear la cuenta: ") // Manejar errores
+    }
   }
+  
 
   return (
     <div className="bg-white relative lg:py-6">

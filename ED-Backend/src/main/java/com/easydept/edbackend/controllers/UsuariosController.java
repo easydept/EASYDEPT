@@ -1,5 +1,6 @@
 package com.easydept.edbackend.controllers;
 
+import com.easydept.edbackend.dtos.ErrorResponse;
 import com.easydept.edbackend.entity.Edificio;
 import com.easydept.edbackend.entity.Usuario;
 import com.easydept.edbackend.services.UsuariosService;
@@ -19,10 +20,14 @@ public class UsuariosController {
     private UsuariosService usuariosService;
 
     @PostMapping
-    public Usuario createUsuario(@RequestBody Usuario usuario) {
-        
-        return usuariosService.saveUsuario(usuario);
-    }
+    public Object createUsuario(@RequestBody Usuario usuario, @RequestParam String nombreRol) {
+        try {
+            return usuariosService.saveUsuario(usuario, nombreRol); // Retorna el usuario creado
+        } catch (IllegalArgumentException ex) {
+            // Retornar un objeto de error si el usuario ya existe
+            return new ErrorResponse(ex.getMessage()); // Crear una clase ErrorResponse
+    }}
+
     @GetMapping
     public List<Usuario> getUsuarios() {
         return this.usuariosService.getAllUsuarios();

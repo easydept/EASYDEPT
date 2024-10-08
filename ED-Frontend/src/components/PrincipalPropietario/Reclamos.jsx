@@ -42,7 +42,7 @@ const Reclamos = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg">
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg font-montserrat">
             <h2 className="text-lg font-bold mb-4">Nuevo Reclamo</h2>
 
             {/* Campo: nombre */}

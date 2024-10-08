@@ -2,6 +2,7 @@ package com.easydept.edbackend.services;
 
 import com.easydept.edbackend.entity.Edificio;
 import com.easydept.edbackend.entity.Rol;
+import com.easydept.edbackend.entity.RolUsuario;
 import com.easydept.edbackend.entity.Usuario;
 import com.easydept.edbackend.repositories.RolesRepository;
 import com.easydept.edbackend.repositories.RolesUsuariosRepository; // Asegúrate de importar el repositorio adecuado
@@ -34,10 +35,22 @@ public class UsuariosService {
     }
 
     @Transactional
-    public Usuario saveUsuario(Usuario usuario) {
-        String encryptedPassword = passwordEncoder.encode(usuario.getPassword());
-        usuario.setPassword(encryptedPassword);
-        return usuariosRepository.save(usuario);
+    public Usuario saveUsuario(Usuario usuario, String nombreRol) {
+        if(usuariosRepository.findByEmail(usuario.getEmail()) == null) {
+            String encryptedPassword = passwordEncoder.encode(usuario.getPassword());
+            usuario.setPassword(encryptedPassword);
+            Rol rolUsuario = rolesRepository.findByNombre(nombreRol);
+            if (rolUsuario == null) {
+                throw new IllegalArgumentException("El rol " + nombreRol + " no existe.");
+            }
+            Usuario usuarioCreado = usuariosRepository.save(usuario);
+            RolUsuario rolUsuario1 = new RolUsuario(usuarioCreado, rolUsuario);
+            rolesUsuariosRepository.save(rolUsuario1);
+            return usuarioCreado;
+        }
+        else{
+            throw new IllegalArgumentException("El usuario con el email " + usuario.getEmail() + " ya existe.");
+        }
     }
 
     @Transactional(readOnly = true)
