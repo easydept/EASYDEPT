@@ -4,8 +4,9 @@ import com.easydept.edbackend.entity.Edificio;
 import com.easydept.edbackend.services.EdificiosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+import org.springframework.http.ResponseEntity;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/edificios")
@@ -18,11 +19,24 @@ public class EdificiosController {
     public Edificio createEdificio(@RequestBody Edificio edificio) {
         return edificiosService.saveEdificio(edificio);
     }
+
     @GetMapping
     public List<Edificio> getEdificios() {
         return this.edificiosService.getAllEdificios();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Edificio> getEdificioById(@PathVariable Integer id) {
+        Optional<Edificio> edificio = edificiosService.getEdificioById(id);
+        return edificio.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
-    // Otros endpoints si es necesario
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEdificioById(@PathVariable Integer id) {
+        edificiosService.deleteEdificioById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
+

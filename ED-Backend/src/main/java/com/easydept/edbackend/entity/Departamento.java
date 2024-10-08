@@ -21,11 +21,11 @@ public class Departamento {
     @Column(name = "numero_piso", nullable = false)
     private Integer numeroPiso;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_propietario")
     private Usuario propietario;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_inquilino")
     private Usuario inquilino;
 

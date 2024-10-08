@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EdificiosService {
@@ -18,6 +19,7 @@ public class EdificiosService {
         this.edificiosRepository = edificiosRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<Edificio> getAllEdificios() {
         return edificiosRepository.findAll();
     }
@@ -26,6 +28,17 @@ public class EdificiosService {
     public Edificio saveEdificio(Edificio edificio) {
         return edificiosRepository.save(edificio);
     }
-}
 
+
+    @Transactional
+    public void deleteEdificioById(Integer id) {
+        edificiosRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Edificio> getEdificioById(Integer id) {
+        return edificiosRepository.findById(id);
+    }
+
+}
 
