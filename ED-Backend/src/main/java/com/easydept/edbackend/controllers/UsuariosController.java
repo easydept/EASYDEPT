@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
