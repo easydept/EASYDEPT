@@ -3,6 +3,7 @@ package com.easydept.edbackend.entity;
 import jakarta.persistence.*;
 
 @Entity
+//ANOTACION @Data genera auto metodos
 @Table(name = "edificio")
 public class Edificio {
     @Id
