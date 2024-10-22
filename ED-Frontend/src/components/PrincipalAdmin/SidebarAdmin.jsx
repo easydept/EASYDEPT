@@ -1,6 +1,7 @@
 import React from "react";
 import SeleccionEdificio from "./SeleccionEdificio"; 
 import RegistroEdificio from "./RegistroEdificio";
+import Building from "../Inicio/Building.jsx"
 
 const SidebarAdmin = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   return (
@@ -25,7 +26,7 @@ const SidebarAdmin = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component3 />)} // Reemplaza Component3 con el componente real
+          onClick={() => setSelectedComponent(<Building />)} // Reemplaza Component3 con el componente real
         >
           Opción 3
         </li>
