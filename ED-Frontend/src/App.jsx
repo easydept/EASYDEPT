@@ -8,11 +8,13 @@ import PrincipalInquilino from './components/PrincipalInquilino/PrincipalInquili
 import PrincipalPropietario from './components/PrincipalPropietario/PrincipalPropietario.jsx';
 import RegistroEdificio from './components/PrincipalAdmin/RegistroEdificio.jsx';
 import RegistroNuevoAdmin from './components/Inicio/RegistroNuevoAdmin.jsx';
+import LandingPage from './components/Inicio/LandingPage.jsx';
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/home/administrador" element={<PrincipalAdministrador />} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
-import { FaArrowLeft } from 'react-icons/fa'; // Importar un icono de flecha, asegúrate de tener react-icons instalado
+import { FaArrowLeft } from 'react-icons/fa';
 
 const RegistroNuevoAdmin = () => {
   const [usuario, setUsuario] = useState({
