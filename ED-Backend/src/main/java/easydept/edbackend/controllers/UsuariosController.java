@@ -4,10 +4,12 @@ import easydept.edbackend.dtos.ErrorResponse;
 import easydept.edbackend.entity.Usuario;
 import easydept.edbackend.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3001")
@@ -34,9 +36,11 @@ public class UsuariosController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> getUsuariooById(@PathVariable Integer id) {
-        Optional<Usuario> usuario = usuariosService.getUsuarioById(id);
-        return usuario.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        try {
+            Usuario responseValue = usuariosService.getUsuarioById(id);
+            return new ResponseEntity<>(responseValue, HttpStatus.OK);
+    }catch (NoSuchElementException ex) {
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);}
     }
 
     @GetMapping("/inquilino")

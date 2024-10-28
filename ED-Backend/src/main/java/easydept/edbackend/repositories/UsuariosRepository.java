@@ -1,5 +1,6 @@
 package easydept.edbackend.repositories;
 
+import easydept.edbackend.entity.Departamento;
 import easydept.edbackend.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 

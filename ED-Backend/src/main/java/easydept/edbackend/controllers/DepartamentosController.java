@@ -1,8 +1,10 @@
 package easydept.edbackend.controllers;
 
 import easydept.edbackend.entity.Departamento;
+import easydept.edbackend.entity.Usuario;
 import easydept.edbackend.services.DepartamentosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,13 +38,20 @@ public class DepartamentosController {
         departamentosService.deleteDepartamentoById(id);
     }
 
-//    @PostMapping("/{idDepartamento}/asignar-inquilino")
-//    public Departamento asignarInquilino(@PathVariable Integer idDepartamento, @RequestBody Usuario inquilino) {
-//        return departamentosService.asignarInquilino(idDepartamento, inquilino);
-//    }
-//
-//    @PostMapping("/{idDepartamento}/asignar-propietario")
-//    public Departamento asignarPropietario(@PathVariable Integer idDepartamento, @RequestBody Usuario propietario) {
-//        return departamentosService.asignarPropietario(idDepartamento, propietario);
-//    }
+
+    @PatchMapping("/{idDepartamento}/asignar-inquilino/{idInquilino}")
+    public ResponseEntity<Departamento> asignarInquilino(
+            @PathVariable Integer idDepartamento,
+            @PathVariable Integer idInquilino) {
+        Departamento departamento = departamentosService.asignarInquilino(idDepartamento, idInquilino);
+        return ResponseEntity.ok(departamento);
+    }
+
+    @PatchMapping("/{idDepartamento}/asignar-propietario/{idPropietario}")
+    public ResponseEntity<Departamento> asignarPropietario(
+            @PathVariable Integer idDepartamento,
+            @PathVariable Integer idPropietario) {
+        Departamento departamento = departamentosService.asignarPropietario(idDepartamento, idPropietario);
+        return ResponseEntity.ok(departamento);
+    }
 }

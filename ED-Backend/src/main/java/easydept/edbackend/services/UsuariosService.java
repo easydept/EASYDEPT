@@ -53,8 +53,8 @@ public class UsuariosService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Usuario> getUsuarioById(Integer id) {
-        return usuariosRepository.findById(id);
+    public Usuario getUsuarioById(Integer id) {
+        return usuariosRepository.findById(id).orElseThrow();
     }
 
     // Verificar si el usuario tiene el rol de inquilino
