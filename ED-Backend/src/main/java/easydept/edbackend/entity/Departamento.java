@@ -1,11 +1,14 @@
 package easydept.edbackend.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "departamento")
 public class Departamento {
 
+    // Getters y setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_departamento")
@@ -29,65 +32,42 @@ public class Departamento {
     @JoinColumn(name = "id_inquilino")
     private Usuario inquilino;
 
+    @Column(name = "ponderacion_expensas")
+    private float ponderacionExpensas;
+
     // Constructor por defecto
     public Departamento() {
     }
 
     // Constructor completo
-    public Departamento(Edificio edificio, String unidad, Integer numeroPiso, Usuario propietario, Usuario inquilino) {
+    public Departamento(Edificio edificio, String unidad, Integer numeroPiso, Usuario propietario, Usuario inquilino, float ponderacionExpensas) {
         this.edificio = edificio;
         this.unidad = unidad;
         this.numeroPiso = numeroPiso;
         this.propietario = propietario;
         this.inquilino = inquilino;
-    }
-
-    // Getters y setters
-    public Integer getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
-
-    public Edificio getEdificio() {
-        return edificio;
+        this.ponderacionExpensas = ponderacionExpensas;
     }
 
     public void setEdificio(Edificio edificio) {
         this.edificio = edificio;
     }
 
-    public String getUnidad() {
-        return unidad;
-    }
-
     public void setUnidad(String unidad) {
         this.unidad = unidad;
-    }
-
-    public Integer getNumeroPiso() {
-        return numeroPiso;
     }
 
     public void setNumeroPiso(Integer numeroPiso) {
         this.numeroPiso = numeroPiso;
     }
 
-    public Usuario getPropietario() {
-        return propietario;
-    }
-
     public void setPropietario(Usuario propietario) {
         this.propietario = propietario;
-    }
-
-    public Usuario getInquilino() {
-        return inquilino;
     }
 
     public void setInquilino(Usuario inquilino) {
         this.inquilino = inquilino;
     }
+
+    public void setPonderacionExpensas(float ponderacionExpensas) { this.ponderacionExpensas = ponderacionExpensas; }
 }
