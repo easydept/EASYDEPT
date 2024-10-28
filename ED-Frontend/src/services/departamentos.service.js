@@ -21,3 +21,13 @@ export const getDepartamentos = async () => {
     const response = await axios.delete(`http://localhost:8080/departamentos/${id}`);
     return response.data
   };
+
+  export const asignarInquilino = async (idDepartamento, idInquilino) => {
+    const response = await axios.patch(`http://localhost:8080/departamentos/${idDepartamento}/asignar-inquilino/${idInquilino}`);
+    return response.data
+  }
+
+  export const asignarPropietario = async (idDepartamento, idPropietario) => {
+    const response = await axios.patch(`http://localhost:8080/departamentos/${idDepartamento}/asignar-propietario/${idPropietario}`);
+    return response.data
+  }
