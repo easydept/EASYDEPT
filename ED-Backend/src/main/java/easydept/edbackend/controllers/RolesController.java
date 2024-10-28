@@ -23,7 +23,4 @@ public class RolesController {
     public List<Rol> getRoles() {
         return this.rolesService.getAllRoles();
     }
-
-
-    // Otros endpoints si es necesario
 }
