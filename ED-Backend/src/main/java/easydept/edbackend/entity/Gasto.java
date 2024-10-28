@@ -31,12 +31,16 @@ public class Gasto {
     @JoinColumn(name = "id_expensas", nullable = false)
     private Expensas idExpensas;
 
-    public Gasto(String nombre, float monto, TipoGasto idTipoGasto, Expensas idExpensas) {
+    @Setter
+    @Column(name = "url_documento")
+    private String urlDocumento;
+
+    public Gasto(String nombre, float monto, TipoGasto idTipoGasto, Expensas idExpensas, String urlDocumento) {
         this.nombre = nombre;
         this.monto = monto;
         this.idTipoGasto = idTipoGasto;
         this.idExpensas = idExpensas;
+        this.urlDocumento = urlDocumento;
     }
-
     public Gasto() {}
 }
