@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { postUsuarios } from '../../services/usuarios.service';
+import emailjs from 'emailjs-com';
 import { FaArrowLeft } from 'react-icons/fa'; // Importar un icono de flecha, asegúrate de tener react-icons instalado
 
 const RegistroNuevoAdmin = () => {
@@ -9,9 +9,8 @@ const RegistroNuevoAdmin = () => {
     apellido: '',
     email: '',
     telefono: '',
-    password: '',
     fechaNacimiento: '',
-    passwordConfirmar: '',
+    direccion: '',
   });
 
   const [edificio, setEdificio] = useState({
@@ -41,16 +40,10 @@ const RegistroNuevoAdmin = () => {
 
     // Validación de campos
     if (!usuario.nombre || !usuario.apellido || !usuario.email ||
-        !usuario.direccion || !usuario.password || !usuario.passwordConfirmar) {
+      !usuario.direccion) {
       setError("Todos los campos son obligatorios.");
       return;
-    }
-
-    // Validación de contraseñas
-    if (usuario.password !== usuario.passwordConfirmar) {
-      setError("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-      return;
-    }
+  }
 
     // Validación de teléfono
     if (!usuario.telefono) {
@@ -59,31 +52,76 @@ const RegistroNuevoAdmin = () => {
     }
 
     // Validación de números de departamentos y pisos
-    if (edificio.numDepartamentos <= 0 || edificio.numPisos <= 0) {
-      setError("Los números de departamentos y pisos deben ser mayores que cero.");
+    if (edificio.numDepartamentos <= 1 || edificio.numPisos <= 0) {
+      setError("Los números de departamentos y pisos deben ser mayores que uno y cero respectivamente.");
       return;
     }
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(usuario.email)) {
+      setError("Por favor, introduce un email válido.");
+      return;
+}
 
     console.log('Datos del Usuario:', usuario);
     console.log('Datos del Edificio:', edificio);
+
+    // Aquí es donde agregas tus credenciales de EmailJS
+    const serviceID = 'service_vm9pgk2';   // Reemplaza con tu SERVICE_ID
+    const templateID = 'template_86uzg4q'; // Reemplaza con tu TEMPLATE_ID
+    const userID = 'Qq6nKv0nrBN5eaER2';      // Reemplaza con tu Public Key (USER_ID)
+
+    let formData = {
+      nombreUsuario: usuario.nombre,
+      apellidoUsuario: usuario.apellido,
+      email: usuario.email,
+      telefono: usuario.telefono,
+      fechaNacimiento: usuario.fechaNacimiento,
+      direccionUsuario: usuario.direccion,
+      nombreEdificio: edificio.nombre,
+      direccionEdificio: edificio.direccion,
+      ciudad: edificio.ciudad,
+      pais: edificio.pais,
+      numPisos: edificio.numPisos,
+      numDepartamentos: edificio.numDepartamentos
+    };
+
+    console.log(formData)
+
+    emailjs.send(serviceID, templateID, formData, userID)
+        .then((response) => {
+            alert('Correo enviado con éxito!');
+        }, (error) => {
+            alert('Error al enviar el correo: ' + JSON.stringify(error));
+        });
+
+    // Limpiar formulario
+    formData = {
+      nombreUsuario: '',
+      apellidoUsuario: '',
+      email: '',
+      telefono: '',
+      fechaNacimiento: '',
+      direccionUsuario: '',
+      nombreEdificio: '',
+      direccionEdificio: '',
+      ciudad: '',
+      pais: '',
+      numPisos: '',
+      numDepartamentos: ''
+    };
+
     alert("Formulario enviado. Espera la confirmación del administrador.");
     setError(""); 
 
-    // Llamada para crear el usuario
-    // try {
-    //   const response = await postUsuarios(usuarioACrear);
-    //   console.log('Usuario creado:', response);
-    //   navigate('/'); 
-    // } catch (err) {
-    //   setError("Error al crear la cuenta.");
-    // }
   };
 
   return (
     <div className="bg-custom-green min-h-screen flex items-center justify-center font-montserrat relative">
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/')} // Cambia '/ruta-deseada' por la ruta que quieras
+        onClick={() => navigate('/')}
         className="absolute top-4 left-4 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200"
       >
         <FaArrowLeft className="text-custom-green" size={20} />
@@ -172,28 +210,6 @@ const RegistroNuevoAdmin = () => {
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Contraseña</label>
-                  <input
-                    type="password"
-                    name="password"
-                    value={usuario.password}
-                    onChange={handleUsuarioChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-green"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
-                  <input
-                    type="password"
-                    name="passwordConfirmar"
-                    value={usuario.passwordConfirmar}
-                    onChange={handleUsuarioChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-green"
-                    required
-                  />
-                </div>
               </div>
             </div>
 
@@ -254,7 +270,7 @@ const RegistroNuevoAdmin = () => {
                     onChange={handleEdificioChange}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-green"
                     required
-                    min="1"
+                    min="0"
                   />
                 </div>
                 <div>
