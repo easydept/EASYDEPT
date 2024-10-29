@@ -19,7 +19,6 @@ const LandingPage = () => {
     { id: 5, title: "Liquidación de Expensas", description: "Genera expensas de forma clara y precisa.", icon: <FaMoneyBillWave style={{ color: '#004d29' }} /> },
   ];
 
-  // Datos de las tarjetas
   const cardData = [
     {
       id: 1,
@@ -60,20 +59,15 @@ const LandingPage = () => {
 
   return (
     <div className="bg-white font-montserrat text-gray-800">
-      {/* Navbar sin loggeo */}
       <Navbar isLoggedIn={false} />
 
-      {/* Sección de Encabezado */}
       <header className="min-h-screen bg-white flex items-center justify-center">
         <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col lg:flex-row items-center justify-between p-4 w-full min-h-[670px] max-w-[1500px] xl:px-5">
-          {/* Columna de Texto */}
           <div className="flex-1 flex flex-col items-center justify-center p-4 text-white">
             <p className="text-4xl mb-6 transition duration-300 transform hover:scale-105 font-semibold text-center">
               Gestión simplificada para Administradores de Edificios
             </p>
           </div>
-
-          {/* Columna de Imagen */}
           <div className="flex-1 flex justify-center items-center p-4">
             <img
               src="logo.png"
@@ -84,7 +78,11 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* Sección de Quiénes Somos */}
+{/* Ver como hacer que este blob sea parte del fondo
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#F3F4F6" d="M53.1,-67.6C67.5,-62.6,77,-45.3,78.6,-28.4C80.3,-11.4,74,5.3,66,18.8C58,32.2,48.1,42.5,36.8,48.2C25.5,53.9,12.8,55.1,-0.8,56.3C-14.5,57.5,-28.9,58.6,-42.2,53.5C-55.6,48.4,-67.7,37.2,-68.5,24.7C-69.3,12.1,-58.7,-1.7,-54.3,-18.4C-50,-35.1,-51.9,-54.7,-43.9,-61.7C-35.9,-68.8,-18,-63.4,0.7,-64.3C19.3,-65.3,38.7,-72.5,53.1,-67.6Z" transform="translate(100 100)" />
+</svg>*/}
+
       <section className="min-h-screen flex flex-col items-center justify-center py-16 px-8 bg-gray-100 text-center">
         <h2 className="text-3xl font-semibold mb-6">¿Quiénes Somos?</h2>
         <p className="text-lg text-gray-700">
@@ -92,102 +90,99 @@ const LandingPage = () => {
         </p>
       </section>
 
-  {/* Sección de Usuarios */}
-  <section className="min-h-screen flex flex-col items-center justify-center py-16 px-8 text-center">
-    <h2 className="text-3xl font-semibold mb-6">Usuarios en EasyDept</h2>
-    <p className="text-lg mb-10">
-      EasyDept ofrece un sistema de gestión donde interactúan tres tipos de usuarios:
-    </p>
+      <div className="my-8"></div> {/* Separador */}
 
-    {/* Contenedor de las tarjetas */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1200px]">
-      {cardData.map((card) => (
-        <div
-          key={card.id}
-          className="relative bg-custom-green text-white rounded-lg shadow-lg p-6 transition-transform duration-300 transform hover:scale-105 cursor-pointer h-72" // Aumentada la altura a 'h-72'
-          onClick={() => setActiveCard(activeCard === card.id ? null : card.id)} // Alterna el estado activo
-        >
-          <div className="flex flex-col items-center justify-center h-full"> {/* Añadido 'justify-center' para centrar verticalmente */}
-            {activeCard === card.id ? (
-              <>
-                <h3 className="text-xl font-semibold">{card.title}</h3>
-                <p className="text-lg text-center">{card.description}</p>
-                <ul className="mt-4 text-left">
-                  {card.functions.map((func, index) => (
-                    <li key={index}>{func}</li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <>
-                {card.icon}
-                <h3 className="text-xl font-semibold">{card.title}</h3>
-                <p className="text-lg text-center">Haz clic para ver más</p> {/* Mensaje indicativo */}
-              </>
-            )}
-          </div>
+      <section className="min-h-screen flex flex-col items-center justify-center py-16 px-8 text-center">
+        <h2 className="text-3xl font-semibold mb-6">Usuarios en EasyDept</h2>
+        <p className="text-lg mb-10">
+          EasyDept ofrece un sistema de gestión donde interactúan tres tipos de usuarios:
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1200px]">
+          {cardData.map((card) => (
+            <div
+              key={card.id}
+              className="relative bg-custom-green text-white rounded-lg shadow-lg p-6 transition-transform duration-300 transform hover:scale-105 cursor-pointer h-72"
+              onClick={() => setActiveCard(activeCard === card.id ? null : card.id)}
+            >
+              <div className="flex flex-col items-center justify-center h-full">
+                {activeCard === card.id ? (
+                  <>
+                    <h3 className="text-xl font-semibold">{card.title}</h3>
+                    <p className="text-lg text-center">{card.description}</p>
+                    <ul className="mt-4 text-left">
+                      {card.functions.map((func, index) => (
+                        <li key={index}>{func}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    {card.icon}
+                    <h3 className="text-xl font-semibold">{card.title}</h3>
+                    <p className="text-lg text-center">Haz clic para ver más</p>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </section>
+      </section>
 
+      <div className="my-8"></div> {/* Separador */}
 
-     {/* Sección de Acciones del Administrador */}
-     <section className="min-h-screen flex flex-col items-center justify-center py-16 px-8 bg-gray-100 text-center">
+      <section className="min-h-screen flex flex-col items-center justify-center py-16 px-8 bg-gray-100 text-center">
         <h2 className="text-3xl font-semibold mb-6">Acciones del Administrador</h2>
         <p className="text-lg mb-6">
           Como administrador, puedes realizar múltiples tareas para facilitar la gestión de edificios:
         </p>
-
         <div className="flex justify-center">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {adminActions1.map((action) => (
               <div 
-              key={action.id} 
-              className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 min-h-[200px] flex flex-col justify-between"
-              style={{
-                border: '2px solid #004d29',
-                borderRadius: '8px',
-              }}
-            >
-              <div className="flex justify-center items-center mb-4 text-4xl">{action.icon}</div>
-              <h3 className="font-semibold text-lg">{action.title}</h3>
-              <p className="text-gray-600">{action.description}</p>
-            </div>
-
+                key={action.id} 
+                className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 min-h-[200px] flex flex-col justify-between"
+                style={{
+                  border: '2px solid #004d29',
+                  borderRadius: '8px',
+                }}
+              >
+                <div className="flex justify-center items-center mb-4 text-4xl">{action.icon}</div>
+                <h3 className="font-semibold text-lg">{action.title}</h3>
+                <p className="text-gray-600">{action.description}</p>
+              </div>
             ))}
           </div>
         </div>
         <br />
         <div className="flex justify-center w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-{adminActions2.map((action) => (
+            {adminActions2.map((action) => (
               <div 
-              key={action.id} 
-              className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 min-h-[200px] flex flex-col justify-between"
-              style={{
-                border: '2px solid #004d29',
-                borderRadius: '8px',
-              }}
-            >
-              <div className="flex justify-center items-center mb-4 text-4xl">{action.icon}</div>
-              <h3 className="font-semibold text-lg">{action.title}</h3>
-              <p className="text-gray-600">{action.description}</p>
-            </div>
-
+                key={action.id} 
+                className="bg-white rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 min-h-[200px] flex flex-col justify-between"
+                style={{
+                  border: '2px solid #004d29',
+                  borderRadius: '8px',
+                }}
+              >
+                <div className="flex justify-center items-center mb-4 text-4xl">{action.icon}</div>
+                <h3 className="font-semibold text-lg">{action.title}</h3>
+                <p className="text-gray-600">{action.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Sección de Seguridad */}
+      <div className="my-8"></div> {/* Separador */}
+
       <section className="min-h-screen flex flex-col items-center justify-center py-16 px-8 bg-white text-center">
         <h2 className="text-3xl font-semibold mb-6">Seguridad del Sistema</h2>
         <div className="flex justify-center items-center mb-4">
-          <FaLock /> {/* Cambia 'text-custom-green' al color que desees */}
+          <FaLock />
         </div>
-        <p className="text-lg text-gray-700 ">
-          La seguridad de tus datos es nuestra prioridad. EasyDept implementa las mejores prácticas en protección de datos, cifrado y privacidad para asegurar la integridad de toda la información.
+        <p className="text-lg text-gray-700">
+          Nos comprometemos con la seguridad y privacidad de los datos de nuestros usuarios, implementando las mejores prácticas para proteger la información de tu edificio.
         </p>
       </section>
 
@@ -201,6 +196,6 @@ const LandingPage = () => {
       </section>
     </div>
   );
-};
+}
 
 export default LandingPage;
