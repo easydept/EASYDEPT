@@ -28,7 +28,7 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
           className="hover:bg-green-700 p-2 rounded"
           onClick={() => setSelectedComponent(<Building />)}
         >
-          1
+          Departamentos
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
@@ -40,13 +40,13 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
           className="hover:bg-green-700 p-2 rounded"
           onClick={() => setSelectedComponent(<Component3 />)}
         >
-          3
+          Chats
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
           onClick={() => setSelectedComponent(<Component4 />)}
         >
-          4
+          Expensas
         </li>
       </ul>
     </aside>
