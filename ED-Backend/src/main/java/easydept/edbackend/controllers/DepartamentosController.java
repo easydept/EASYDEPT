@@ -1,6 +1,7 @@
 package easydept.edbackend.controllers;
 
 import easydept.edbackend.entity.Departamento;
+import easydept.edbackend.entity.Edificio;
 import easydept.edbackend.entity.Usuario;
 import easydept.edbackend.services.DepartamentosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/departamentos")
 public class DepartamentosController {
@@ -31,6 +31,11 @@ public class DepartamentosController {
     @GetMapping("/{id}")
     public Optional<Departamento> getDepartamentoById(@PathVariable Integer id) {
         return departamentosService.getDepartamentoById(id);
+    }
+
+    @GetMapping("/edificio/{idEdificio}")
+    public List<Departamento> getDepartamentosEdificio(@PathVariable Integer idEdificio) {
+        return this.departamentosService.getDepartamentosEdificio(idEdificio);
     }
 
     @DeleteMapping("/{id}")

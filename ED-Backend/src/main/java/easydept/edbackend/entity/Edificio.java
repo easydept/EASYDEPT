@@ -26,8 +26,8 @@ public class Edificio {
     @Column(name = "cantidad_pisos", nullable = false)
     private Integer cantidadPisos;
 
-    @Column(name = "cantidad_unidades_piso", nullable = false)
-    private int cantidadUnidadesPiso;
+    @Column(name = "cantidad_unidades", nullable = false)
+    private Integer cantidadUnidades;
 
     @Column(name = "foto_url")
     private String fotoUrl;
@@ -42,13 +42,13 @@ public class Edificio {
 
     // Constructor completo
     public Edificio(String nombre, String direccion, String ciudad, String pais,
-                    Integer cantidadPisos, int cantidadUnidadesPiso, Usuario administrador, String fotoUrl) {
+                    Integer cantidadPisos, Integer cantidadUnidades, Usuario administrador, String fotoUrl) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.pais = pais;
         this.cantidadPisos = cantidadPisos;
-        this.cantidadUnidadesPiso = cantidadUnidadesPiso;
+        this.cantidadUnidades = cantidadUnidades;
         this.administrador = administrador;
         this.fotoUrl = fotoUrl;
     }
@@ -110,12 +110,12 @@ public class Edificio {
         this.cantidadPisos = cantidadPisos;
     }
 
-    public int getCantidadUnidadesPiso() {
-        return cantidadUnidadesPiso;
+    public int getCantidadUnidades() {
+        return cantidadUnidades;
     }
 
-    public void setCantidadUnidadesPiso(int cantidadUnidadesPorPiso) {
-        this.cantidadUnidadesPiso = cantidadUnidadesPorPiso;
+    public void setCantidadUnidades(Integer cantidadUnidades) {
+        this.cantidadUnidades = cantidadUnidades;
     }
 
     public Usuario getAdministrador() {

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/roles")
 public class RolesController {
@@ -23,7 +22,4 @@ public class RolesController {
     public List<Rol> getRoles() {
         return this.rolesService.getAllRoles();
     }
-
-
-    // Otros endpoints si es necesario
 }
