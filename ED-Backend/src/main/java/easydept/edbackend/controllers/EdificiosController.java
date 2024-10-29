@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/edificios")
 public class EdificiosController {
@@ -25,6 +24,11 @@ public class EdificiosController {
     @GetMapping
     public List<Edificio> getEdificios() {
         return this.edificiosService.getAllEdificios();
+    }
+
+    @GetMapping("/admin/{idAdministrador}")
+    public List<Edificio> getEdificiosAdministrador(@PathVariable Integer idAdministrador) {
+        return this.edificiosService.getEdificiosAdmin(idAdministrador);
     }
 
     @GetMapping("/{id}")
