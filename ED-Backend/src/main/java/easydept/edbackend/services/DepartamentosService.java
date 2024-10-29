@@ -1,5 +1,6 @@
 package easydept.edbackend.services;
 
+import easydept.edbackend.dtos.DeptoRequest;
 import easydept.edbackend.entity.Departamento;
 import easydept.edbackend.entity.Edificio;
 import easydept.edbackend.entity.Usuario;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +34,21 @@ public class DepartamentosService {
     }
 
     @Transactional
-    public Departamento saveDepartamento(Departamento departamento) {
-        return departamentosRepository.save(departamento);
+    public List<Departamento> saveDepartamentos(Integer idEdificio, List<DeptoRequest> departamentosACrear) {
+        Edificio edificio = edificiosService.getEdificioById(idEdificio);
+        if(edificio.getCantidadUnidades() == departamentosACrear.size()) {
+        List<Departamento> departamentos = new ArrayList<>();
+        for (DeptoRequest depto : departamentosACrear) {
+            Integer numeroPiso = depto.getNumeroPiso();
+            String unidad = depto.getUnidad();
+            Departamento nuevoDepto = new Departamento(edificio, unidad, numeroPiso, null, null, null);
+            departamentos.add(nuevoDepto);
+        }
+        return departamentosRepository.saveAll(departamentos);}
+        else {
+            throw new IllegalArgumentException("La cantidad de departamentos a crear no es" +
+                    "igual a la cantidad de unidades del edificio.");
+        }
     }
 
     @Transactional(readOnly = true)
