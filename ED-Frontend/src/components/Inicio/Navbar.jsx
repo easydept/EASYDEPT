@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "/logoVerde.png";
+import logo from "/edificiosVerde.png";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ toggleSidebar, isLoggedIn }) => {
@@ -41,7 +41,7 @@ const Navbar = ({ toggleSidebar, isLoggedIn }) => {
 
       {/* Contenedor para el logo y nombre de la aplicación */}
       <div className="flex items-center">
-        <img src={logo} alt="Logo EasyDept" className="h-12 mr-3" />
+        <img src={logo} alt="Logo EasyDept" className="h-5 mr-3" /> {/* Logo más pequeño */}
         <h1 className="text-2xl font-bold text-custom-green">EasyDept</h1>
       </div>
 
@@ -92,7 +92,6 @@ const Navbar = ({ toggleSidebar, isLoggedIn }) => {
           >
             Unirse a EasyDept
           </button>
-          
         </div>
       )}
     </nav>
