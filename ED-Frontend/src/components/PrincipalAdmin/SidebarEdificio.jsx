@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Building from "./Building.jsx";
 
-const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
+const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent, idEdificio }) => {
   const navigate = useNavigate();
 
   return (
@@ -11,11 +11,10 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      {/* Contenedor flex para alinear el título y el botón de volver */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">Menú</h2>
         <button
-          onClick={() => navigate("/home/administrador")} // Reemplaza con la ruta deseada
+          onClick={() => navigate("/home/administrador")}
           className="p-1 text-custom-green font-bold bg-white rounded-full"
         >
           ← Inicio
@@ -25,27 +24,30 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
       <ul className="space-y-2">
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Building />)}
+          onClick={() => {
+            navigate(`/home/administrador/edificio/${idEdificio}`);
+            setSelectedComponent(<Building />);
+          }}
         >
-          1
+          Configurar Edificio
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component2 />)}
+          onClick={() => navigate(`/home/administrador/edificio/${idEdificio}/reclamos`)}
         >
-          2
+          Resumen Reclamos
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component3 />)}
+          onClick={() => navigate(`/home/administrador/edificio/${idEdificio}/chat`)}
         >
-          3
+          Resumen Chats
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component4 />)}
+          onClick={() => navigate(`/home/administrador/edificio/${idEdificio}/expensas`)}
         >
-          4
+          Resumen Expensas
         </li>
       </ul>
     </aside>

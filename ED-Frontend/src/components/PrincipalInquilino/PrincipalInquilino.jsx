@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Inicio/Navbar';
 import SidebarInquilino from './SidebarInquilino';
-import Reclamos from './Reclamos';
+import Reclamos from '../Reclamos/RegistrarReclamo';
 
 const PrincipalInquilino = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Inicializar como true

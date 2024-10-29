@@ -18,13 +18,14 @@ const EdificioPageAdministrador = () => {
         isOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}
         setSelectedComponent={setSelectedComponent}
+        idEdificio={idEdificioSelec}
       />
       <div
         className={`flex-1 transition-all duration-500 ${
           isSidebarOpen ? "ml-64" : "ml-0"
         }`}
       >
-        <Navbar toggleSidebar={toggleSidebar} />
+        <Navbar isLoggedIn={true} toggleSidebar={toggleSidebar} />
         {/* Contenedor tipo card */}
         <div className="flex justify-center items-start p-4 h-screen pt-24">
           {" "}
