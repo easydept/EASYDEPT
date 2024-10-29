@@ -11,7 +11,7 @@ import LandingPage from './components/Inicio/LandingPage.jsx';
 import Prueba from './components/Inicio/Prueba.jsx';
 import EdificioPageAdmininstrador from './components/PrincipalAdmin/EdificioPageAdmininstrador.jsx';
 import ResumenChat from "./components/Chat/ResumenChat.jsx";
-import ResumenReclamos from "./components/Reclamos/SidebarReclamos.jsx";
+
 
 function App() {
   return (
@@ -28,7 +28,6 @@ function App() {
         <Route path="/home/administrador" element={<PrincipalAdministrador />} />
         <Route path="/home/administrador/edificio/:idEdificioSelec" element={<EdificioPageAdmininstrador />} />
         <Route path="/home/administrador/edificio/:idEdificio/chat" element={<ResumenChat />} />
-        <Route path="/home/administrador/edificio/:idEdificio/reclamos" element={<ResumenReclamos />} />
         
         
         {/* Rutas para Propietario */}

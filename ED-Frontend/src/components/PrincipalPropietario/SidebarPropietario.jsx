@@ -1,5 +1,5 @@
 import React from "react";
-import RegistrarReclamo from "../Reclamos/RegistrarReclamo";
+import Reclamos from "../Reclamos/Reclamos";
 
 const SidebarPropietario = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   return (
@@ -18,7 +18,7 @@ const SidebarPropietario = ({ isOpen, toggleSidebar, setSelectedComponent }) => 
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<RegistrarReclamo />)} // Reemplaza Component2 con el componente real
+          onClick={() => setSelectedComponent(<Reclamos />)} // Reemplaza Component2 con el componente real
         >
           Reclamos
         </li>
