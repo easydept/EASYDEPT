@@ -10,14 +10,67 @@ const LandingPage = () => {
   const [activeCard, setActiveCard] = useState(null); // Estado para controlar qué tarjeta está activa
 
   const adminActions1 = [
-    { id: 1, title: "Idea", description: "Mantén una comunicación efectiva.", icon: <FaLightbulb style={{ color: '#004d29' }} /> },
-    { id: 2, title: "Design", description: "Resuelve los problemas de manera eficiente.", icon: <FaTools style={{ color: '#004d29' }} /> },
-    { id: 3, title: "Development", description: "Administra y asigna unidades fácilmente.", icon: <FaBrain style={{ color: '#004d29' }} /> }
+    { 
+      id: 1, 
+      title: "Comunicación", 
+      description: (
+        <>
+          Mantén una comunicación efectiva<br /> 
+          tanto con propietarios como inquilinos.
+        </>
+      ),
+      icon: <FaLightbulb style={{ color: '#004d29' }} /> 
+    },
+    { 
+      id: 2, 
+      title: "Eficiencia", 
+      description: (
+        <>
+          Resuelve los problemas<br /> 
+          de manera eficiente.
+        </>
+      ),
+      icon: <FaTools style={{ color: '#004d29' }} /> 
+    },
+    { 
+      id: 3, 
+      title: "Organización", 
+      description: (
+        <>
+          Administra tus edificios y<br /> 
+          gestiona unidades fácilmente.
+        </>
+      ),
+      icon: <FaBrain style={{ color: '#004d29' }} /> 
+    }
   ];
+  
   const adminActions2 = [
-    { id: 4, title: "Success", description: "Lleva un control detallado de los gastos comunes.", icon: <FaChartLine style={{ color: '#004d29' }} /> },
-    { id: 5, title: "Liquidación de Expensas", description: "Genera expensas de forma clara y precisa.", icon: <FaMoneyBillWave style={{ color: '#004d29' }} /> },
+    { 
+      id: 4, 
+      title: "Beneficio", 
+      description: (
+        <>
+          Lleva un control detallado<br /> 
+          de los gastos comunes.
+        </>
+      ),
+      icon: <FaChartLine style={{ color: '#004d29' }} /> 
+    },
+    { 
+      id: 5, 
+      title: "Expensas", 
+      description: (
+        <>
+          Genera la liquidación de las expensas de forma clara<br /> 
+          y precisa para tus propietarios e inquilinos.
+        </>
+      ),
+      icon: <FaMoneyBillWave style={{ color: '#004d29' }} /> 
+    }
   ];
+  
+  
 
   const cardData = [
     {
