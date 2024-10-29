@@ -2,13 +2,11 @@ import axios from "axios";
 
 export const getDepartamentos = async () => {
     const response = await axios.get(`http://localhost:8080/departamentos`)
-    console.log(response.data)
     return response.data
   };
 
 export const getDepartamentosPorEdificio = async (idEdificio) => {
   const response = await axios.get(`http://localhost:8080/departamentos/edificio/${idEdificio}`)
-  console.log(response.data)
   return response.data
 };
 
@@ -17,9 +15,13 @@ export const getDepartamentosPorEdificio = async (idEdificio) => {
     return response.data;
   };
 
+  export const postDepartamentos = async (departamentos, idEdificio) => {
+    const response = await axios.post(`http://localhost:8080/departamentos/edificio/${idEdificio}`, departamentos)
+    return response.data;
+  };
+
   export const getDepartamentoById = async (id) => {
     const response = await axios.get(`http://localhost:8080/departamentos/${id}`);
-    console.log(response)
     return response.data
   };
 
