@@ -18,7 +18,6 @@ export const getEdificios = async () => {
 
   export const getEdificiosById = async (id) => {
     const response = await axios.get(`http://localhost:8080/edificios/${id}`);
-    console.log(response)
     return response.data
   };
 

@@ -7,6 +7,7 @@ import Building from "./Building";
 
 const EdificioPageAdministrador = () => {
   const { idEdificioSelec } = useParams()
+  const idEdificio = idEdificioSelec.split(':')[1];
   const [isSidebarOpen, setIsSidebarOpen] = useState(true) // Inicializar como true
   const [selectedComponent, setSelectedComponent] = useState(<Building />) // 
   const toggleSidebar = () => {
@@ -33,9 +34,9 @@ const EdificioPageAdministrador = () => {
             {" "}
             {/* Ajustar max-h según altura de navbar */}
             {/* Aquí se renderiza el componente seleccionado */}
-            <div className="content">
+            <div className="content font-montserrat">
               <h1>Información del Edificio</h1>
-              <p>ID del Edificio Seleccionado: {idEdificioSelec}</p>
+              <p>ID del Edificio Seleccionado: {idEdificio}</p>
             </div>
             {selectedComponent}
           </div>

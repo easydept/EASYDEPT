@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Building from "./Building.jsx";
+import ReclamosAdmin from "./ReclamosAdmin.jsx";
 
 const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component2 />)}
+          onClick={() => setSelectedComponent(<ReclamosAdmin />)}
         >
-          2
+          Reclamos
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
