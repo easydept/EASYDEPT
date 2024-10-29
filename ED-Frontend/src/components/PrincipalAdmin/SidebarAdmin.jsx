@@ -26,7 +26,7 @@ const SidebarAdmin = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Building />)} // Reemplaza Component3 con el componente real
+          onClick={() => setSelectedComponent(<Component3 />)} // Reemplaza Component3 con el componente real
         >
           Opción 3
         </li>

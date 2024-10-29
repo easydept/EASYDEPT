@@ -26,7 +26,7 @@ const Registro = () => {
   }
 
   const handleCreateAccount = () => {
-    navigate("/")
+    navigate("/inicio")
   }
 
   const handleSubmit = async (e) => {
@@ -86,10 +86,10 @@ const Registro = () => {
     <div className="bg-white relative lg:py-6">
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/')}
-        className="absolute top-4 left-4 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200 ease-in-out"
+        onClick={() => navigate('/inicio')}
+        className="absolute top-4 left-6 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200 ease-in-out"
       >
-        <FaArrowLeft className="text-custom-green" />
+        <FaArrowLeft className="text-custom-green" size={20}/>
       </button>
 
       <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto w-full h-[670px] max-w-[1300px] xl:px-5 lg:flex-row">

@@ -21,10 +21,10 @@ const PrincipalAdministrador = () => {
             />
             <div className={`flex-1 transition-all duration-500 ${isSidebarOpen ? 'ml-64' : 'ml-0'}`}>
                 {/* Navbar loggeada */}
-                <Navbar isLoggedIn={true} toggleSidebar={toggleSidebar} />
+                <Navbar toggleSidebar={toggleSidebar} />
                 {/* Contenedor tipo card */}
                 <div className='flex justify-center items-start p-4 h-screen pt-24'> {/* Agregar padding top */}
-                    <div className='border rounded-lg shadow-lg w-full max-w-6xl bg-white p-6 max-h-[calc(100vh-5rem)] overflow-y-auto'> {/* Ajustar max-h según altura de navbar */}
+                    <div className='border rounded-lg shadow-lg w-full max-w-6xl bg-white p-6 max-h-[calc(100vh-6rem)] overflow-y-auto'> {/* Ajustar max-h según altura de navbar */}
                         {/* Aquí se renderiza el componente seleccionado */}
                         {selectedComponent}
                     </div>

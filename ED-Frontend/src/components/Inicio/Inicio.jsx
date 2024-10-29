@@ -63,7 +63,7 @@ const Inicio = () => {
       {/* Botón de volver */}
       <button
         onClick={() => navigate('/')}
-        className="absolute top-4 left-4 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200"
+        className="absolute top-4 left-6 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200"
       >
         <FaArrowLeft className="text-custom-green" size={20} />
       </button>
@@ -74,7 +74,7 @@ const Inicio = () => {
               <img
                 src="logo.png"
                 alt="Logo"
-                className="w-3/4 h-auto transition duration-500 ease-in-out transform hover:scale-130"
+                className="w-3/4 h-auto transition duration-500 ease-in-out transform hover:scale-102"
               />
             </div>
           </div>

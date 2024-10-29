@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar'; 
+import NavbarLP from './NavbarLP'; 
 import { HiUserGroup } from "react-icons/hi";
 import { ImBriefcase } from "react-icons/im";
 import { FaKey, FaLightbulb, FaTools, FaBrain, FaChartLine, FaMoneyBillWave, FaLock } from "react-icons/fa";
@@ -112,7 +112,7 @@ const LandingPage = () => {
 
   return (
     <div className="bg-white font-montserrat text-gray-800">
-      <Navbar isLoggedIn={false} />
+      <NavbarLP />
 
       <header className="min-h-screen bg-white flex items-center justify-center">
         <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col lg:flex-row items-center justify-between p-4 w-full min-h-[670px] max-w-[1500px] xl:px-5">

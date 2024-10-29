@@ -8,7 +8,6 @@ import PrincipalPropietario from './components/PrincipalPropietario/PrincipalPro
 import RegistroEdificio from './components/PrincipalAdmin/RegistroEdificio.jsx';
 import RegistroNuevoAdmin from './components/Inicio/RegistroNuevoAdmin.jsx';
 import LandingPage from './components/Inicio/LandingPage.jsx';
-import Prueba from './components/Inicio/Prueba.jsx';
 import EdificioPageAdmininstrador from './components/PrincipalAdmin/EdificioPageAdmininstrador.jsx';
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/registro/admin" element={<RegistroNuevoAdmin />} />
-        <Route path="/pruebas" element={<Prueba />} />
 
         {/* Rutas para Administrador */}
         <Route path="/home/administrador" element={<PrincipalAdministrador />} />

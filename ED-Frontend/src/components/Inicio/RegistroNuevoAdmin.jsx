@@ -122,7 +122,7 @@ const RegistroNuevoAdmin = () => {
       {/* Botón de volver */}
       <button
         onClick={() => navigate('/')}
-        className="absolute top-4 left-4 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200"
+        className="absolute top-4 left-6 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200"
       >
         <FaArrowLeft className="text-custom-green" size={20} />
       </button>
