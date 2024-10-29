@@ -7,6 +7,7 @@ import PrincipalInquilino from './components/PrincipalInquilino/PrincipalInquili
 import PrincipalPropietario from './components/PrincipalPropietario/PrincipalPropietario.jsx';
 import RegistroEdificio from './components/PrincipalAdmin/RegistroEdificio.jsx';
 import RegistroNuevoAdmin from './components/Inicio/RegistroNuevoAdmin.jsx';
+import LandingPage from './components/Inicio/LandingPage.jsx';
 import Prueba from './components/Inicio/Prueba.jsx';
 import EdificioPageAdmininstrador from './components/PrincipalAdmin/EdificioPageAdmininstrador.jsx';
 
@@ -14,8 +15,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Rutas de Inicio */}
-        <Route path="/" element={<Inicio />} />
+        <Route path="/" element={<LandingPage />} />
+        {/* Rutas de Inicio */}        
+        <Route path="/inicio" element={<Inicio />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/registro/admin" element={<RegistroNuevoAdmin />} />
         <Route path="/pruebas" element={<Prueba />} />

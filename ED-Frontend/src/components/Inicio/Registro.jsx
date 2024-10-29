@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { postUsuarios } from "../../services/usuarios.service"
+import { FaArrowLeft } from 'react-icons/fa'; // Asegúrate de importar el ícono
 
 const Registro = () => {
   const [formData, setFormData] = useState({
@@ -83,6 +84,14 @@ const Registro = () => {
 
   return (
     <div className="bg-white relative lg:py-6">
+      {/* Botón de volver */}
+      <button
+        onClick={() => navigate('/')}
+        className="absolute top-4 left-4 bg-white rounded-full shadow-lg p-2 hover:bg-gray-200 transition duration-200 ease-in-out"
+      >
+        <FaArrowLeft className="text-custom-green" />
+      </button>
+
       <div className="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-opacity-100 bg-custom-green rounded-xl flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto w-full h-[670px] max-w-[1300px] xl:px-5 lg:flex-row">
         <div className="flex flex-col w-full pt-0 pr-10 pb-0 pl-10 lg:pt-0">
           <div className="w-full font-montserrat">
@@ -231,34 +240,26 @@ const Registro = () => {
                   id="rol"
                   className="peer border border-gray-300 focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
                 >
-                  <option value="">Selecciona un rol</option>
-                  <option value="Propietario">Propietario</option>
-                  <option value="Inquilino">Inquilino</option>
+                  <option value="">Seleccionar rol</option>
+                  <option value="administrador">Administrador</option>
+                  <option value="enofilo">Enófilo</option>
+                  <option value="sommelier">Sommelier</option>
                 </select>
                 <label
                   htmlFor="rol"
                   className="absolute top-2 left-2 text-gray-600 transition-transform transform text-sm origin-left -translate-y-8 text-custom-green"
                 >
-                  Selecciona un rol
+                  Rol
                 </label>
               </div>
 
-              {/* Botón Registrarse */}
-              <div className="relative col-span-2">
-                <button
-                  type="submit"
-                  className="w-full inline-block pt-3 pr-5 pb-3 pl-5 text-xl text-center text-white bg-custom-green rounded-xl transition duration-200 hover:bg-custom-green-dark ease-in-out transform hover:scale-102"
-                >
-                  Registrarse
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCreateAccount}
-                  className="w-full inline-block mt-4 pt-2 pr-4 pb-2 pl-4 text-sm text-center text-custom-green bg-white border border-custom-green rounded-md transition duration-200 hover:bg-custom-green hover:text-white"
-                >
-                  ¿Ya tienes cuenta? Inicia sesión aquí
-                </button>
-              </div>
+              {/* Botón de crear cuenta */}
+              <button
+                type="submit"
+                className="col-span-2 mt-6 bg-custom-green hover:bg-green-600 text-white py-2 px-4 rounded transition duration-200 ease-in-out"
+              >
+                Crear cuenta
+              </button>
             </form>
           </div>
         </div>
