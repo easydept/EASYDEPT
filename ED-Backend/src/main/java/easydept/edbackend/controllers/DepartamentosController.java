@@ -1,5 +1,6 @@
 package easydept.edbackend.controllers;
 
+import easydept.edbackend.dtos.DeptoRequest;
 import easydept.edbackend.entity.Departamento;
 import easydept.edbackend.entity.Edificio;
 import easydept.edbackend.entity.Usuario;
@@ -18,9 +19,15 @@ public class DepartamentosController {
     @Autowired
     private DepartamentosService departamentosService;
 
-    @PostMapping
-    public Departamento createDepartamento(@RequestBody Departamento departamento) {
-        return departamentosService.saveDepartamento(departamento);
+//    @PostMapping
+//    public Departamento createDepartamento(@RequestBody Departamento departamento) {
+//        return departamentosService.saveDepartamento(departamento);
+//    }
+    @PostMapping("/edificio/{idEdificio}")
+    public List<Departamento> crearDepartamentos(@PathVariable Integer idEdificio,
+                                                 @RequestBody List<DeptoRequest> departamentosACrear) {
+        return departamentosService.saveDepartamentos(idEdificio, departamentosACrear);
+
     }
 
     @GetMapping
@@ -35,7 +42,7 @@ public class DepartamentosController {
 
     @GetMapping("/edificio/{idEdificio}")
     public List<Departamento> getDepartamentosEdificio(@PathVariable Integer idEdificio) {
-        return this.departamentosService.getDepartamentosEdificio(idEdificio);
+        return departamentosService.getDepartamentosEdificio(idEdificio);
     }
 
     @DeleteMapping("/{id}")

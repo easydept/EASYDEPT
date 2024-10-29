@@ -42,17 +42,7 @@ public class EdificiosService {
 
     @Transactional
     public Edificio saveEdificio(Edificio edificio) {
-        Edificio edificioCreado = edificiosRepository.save(edificio);
-        int cantidadUnidades = edificioCreado.getCantidadUnidades();
-        List<Departamento> departamentos = new ArrayList<>(cantidadUnidades);
-        for (int i = 0; i < cantidadUnidades; i++) {
-            Departamento departamento = new Departamento(edificioCreado, null, null, null, null, null);
-            departamentos.add(departamento);
-        }
-
-        departamentosRepository.saveAll(departamentos);
-
-        return edificioCreado;
+        return edificiosRepository.save(edificio);
     }
 
     @Transactional

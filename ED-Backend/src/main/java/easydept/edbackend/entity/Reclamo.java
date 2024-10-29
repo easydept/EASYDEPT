@@ -22,8 +22,13 @@ public class Reclamo {
 
     @Setter
     @ManyToOne
-    @JoinColumn(name = "id_destinatario", nullable = false)
-    private Usuario destinatario;
+    @JoinColumn(name = "id_edificio", nullable = false)
+    private Edificio edificio;
+
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_departamento", nullable = false)
+    private Departamento departamento;
 
     @Setter
     @Column(name = "fecha_emision")
@@ -38,24 +43,23 @@ public class Reclamo {
     private String descripcion;
 
     @Setter
-    @Column(name = "resuelto")
-    private boolean resuelto;
+    @Column(name = "resolucion")
+    private String resolucion;
 
     @Setter
     @Column(name = "fecha_resolucion")
     private Date fechaResolucion;
 
-    public Reclamo(Usuario emisor, Usuario destinatario, Date fechaEmision, String asunto, String descripcion, boolean resuelto, Date fechaResolucion) {
+    public Reclamo(Usuario emisor, Edificio edificio, Departamento departamento, Date fechaEmision, String asunto, String descripcion, String resolucion, Date fechaResolucion) {
         this.emisor = emisor;
-        this.destinatario = destinatario;
+        this.edificio = edificio;
+        this.departamento = departamento;
         this.fechaEmision = fechaEmision;
         this.asunto = asunto;
         this.descripcion = descripcion;
-        this.resuelto = resuelto;
+        this.resolucion = resolucion;
         this.fechaResolucion = fechaResolucion;
     }
 
     public Reclamo() {}
-
-
 }
