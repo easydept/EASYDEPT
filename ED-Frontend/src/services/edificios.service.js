@@ -6,6 +6,11 @@ export const getEdificios = async () => {
     return response.data
   };
 
+  export const getEdificiosAdmin = async (idAdmin) => {
+    const response = await axios.get(`http://localhost:8080/edificios/admin/${idAdmin}`)
+    console.log(response.data)
+    return response.data
+  };
   export const postEdificio = async (edificio) => {
     const response = await axios.post(`http://localhost:8080/edificios`, edificio)
     return response.data;

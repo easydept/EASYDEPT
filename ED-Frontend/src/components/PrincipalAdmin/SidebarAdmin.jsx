@@ -1,7 +1,7 @@
 import React from "react";
 import SeleccionEdificio from "./SeleccionEdificio"; 
 import RegistroEdificio from "./RegistroEdificio";
-import Building from "../Inicio/Building.jsx"
+import Building from "./Building.jsx"
 
 const SidebarAdmin = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   return (
