@@ -18,10 +18,10 @@ public class  Departamento {
     @JoinColumn(name = "id_edificio", nullable = false)
     private Edificio edificio;
 
-    @Column(name = "unidad", nullable = false)
+    @Column(name = "unidad")
     private String unidad;
 
-    @Column(name = "numero_piso", nullable = false)
+    @Column(name = "numero_piso")
     private Integer numeroPiso;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -33,14 +33,14 @@ public class  Departamento {
     private Usuario inquilino;
 
     @Column(name = "ponderacion_expensas")
-    private float ponderacionExpensas;
+    private Float ponderacionExpensas;
 
     // Constructor por defecto
     public Departamento() {
     }
 
     // Constructor completo
-    public Departamento(Edificio edificio, String unidad, Integer numeroPiso, Usuario propietario, Usuario inquilino, float ponderacionExpensas) {
+    public Departamento(Edificio edificio, String unidad, Integer numeroPiso, Usuario propietario, Usuario inquilino, Float ponderacionExpensas) {
         this.edificio = edificio;
         this.unidad = unidad;
         this.numeroPiso = numeroPiso;
@@ -69,5 +69,5 @@ public class  Departamento {
         this.inquilino = inquilino;
     }
 
-    public void setPonderacionExpensas(float ponderacionExpensas) { this.ponderacionExpensas = ponderacionExpensas; }
+    public void setPonderacionExpensas(Float ponderacionExpensas) { this.ponderacionExpensas = ponderacionExpensas; }
 }

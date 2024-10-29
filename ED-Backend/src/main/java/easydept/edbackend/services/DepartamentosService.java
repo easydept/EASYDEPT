@@ -1,6 +1,7 @@
 package easydept.edbackend.services;
 
 import easydept.edbackend.entity.Departamento;
+import easydept.edbackend.entity.Edificio;
 import easydept.edbackend.entity.Usuario;
 import easydept.edbackend.repositories.DepartamentosRepository;
 import easydept.edbackend.repositories.UsuariosRepository;
@@ -16,12 +17,14 @@ public class DepartamentosService {
     private final DepartamentosRepository departamentosRepository;
     private final UsuariosService usuariosService; // Inyectar el servicio de usuarios
     private final UsuariosRepository usuariosRepository;
+    private final EdificiosService edificiosService;
 
     @Autowired
-    public DepartamentosService(DepartamentosRepository departamentosRepository, UsuariosService usuariosService, UsuariosRepository usuariosRepository) {
+    public DepartamentosService(DepartamentosRepository departamentosRepository, UsuariosService usuariosService, UsuariosRepository usuariosRepository, EdificiosService edificiosService) {
         this.departamentosRepository = departamentosRepository;
         this.usuariosService = usuariosService;
         this.usuariosRepository = usuariosRepository;
+        this.edificiosService = edificiosService;
     }
     @Transactional(readOnly = true)
     public List<Departamento> getAllDepartamentos() {
@@ -74,4 +77,10 @@ public class DepartamentosService {
         }
         throw new IllegalArgumentException("Departamento no encontrado.");
     }
-};
+
+    @Transactional(readOnly = true)
+    public List<Departamento> getDepartamentosEdificio(Integer idEdificio) {
+        Edificio edificio = edificiosService.getEdificioById(idEdificio);
+        return departamentosRepository.findByEdificio(edificio);
+    }
+}

@@ -6,6 +6,12 @@ export const getDepartamentos = async () => {
     return response.data
   };
 
+export const getDepartamentosPorEdificio = async (idEdificio) => {
+  const response = await axios.get(`http://localhost:8080/departamentos/edificio/${idEdificio}`)
+  console.log(response.data)
+  return response.data
+};
+
   export const postDepartamento = async (departamento) => {
     const response = await axios.post(`http://localhost:8080/departamentos`, departamento)
     return response.data;
