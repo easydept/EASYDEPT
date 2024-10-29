@@ -25,7 +25,7 @@ const Registro = () => {
   }
 
   const handleCreateAccount = () => {
-    navigate("/inicio")
+    navigate("/")
   }
 
   const handleSubmit = async (e) => {
@@ -74,7 +74,7 @@ const Registro = () => {
         setError(usuarioCreado.message)
       } else {
         console.log("Usuario creado: ", usuarioCreado)
-        navigate("/inicio")
+        navigate("/")
       }
     } catch (error) {
       setError("Error al crear la cuenta: ") // Manejar errores
