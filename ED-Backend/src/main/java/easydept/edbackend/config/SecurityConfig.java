@@ -27,7 +27,12 @@ public class SecurityConfig {
                                 "/autenticacion/**",
                                 "/permisos/**",
                                 "/roles/**",
-                                "/usuarios/**"
+                                "/usuarios/**",
+                                "/reclamos/**",
+                                "/expensas/**",
+                                "/liquidaciones/expensas/**",
+                                "/gastos/**"
+
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
