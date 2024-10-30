@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Building from "./Building.jsx";
 import ReclamosAdmin from "./ReclamosAdmin.jsx";
+import ResumenChat from "../Chat/ResumenChat.jsx";
 
 const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">Menú</h2>
         <button
-          onClick={() => navigate("/home/administrador")} // Reemplaza con la ruta deseada
+          onClick={() => navigate("/home/administrador")}
           className="p-1 text-custom-green font-bold bg-white rounded-full"
         >
           ← Inicio
@@ -38,7 +39,7 @@ const SidebarEdificio = ({ isOpen, toggleSidebar, setSelectedComponent }) => {
         </li>
         <li 
           className="hover:bg-green-700 p-2 rounded"
-          onClick={() => setSelectedComponent(<Component3 />)}
+          onClick={() => setSelectedComponent(<ResumenChat />)}
         >
           Chats
         </li>
