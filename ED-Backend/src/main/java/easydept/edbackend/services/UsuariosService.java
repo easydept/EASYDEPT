@@ -13,6 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.Period;
+
 
 @Service
 public class UsuariosService {
@@ -33,8 +38,24 @@ public class UsuariosService {
         return usuariosRepository.findAll();
     }
 
+    private boolean isMayorDeEdad(Date fechaNacimiento) {
+        if (fechaNacimiento == null) {
+            throw new IllegalArgumentException("La fecha de nacimiento no puede ser nula.");
+        }
+        // Convertir Date a LocalDate
+        LocalDate fechaNacimientoLocal = fechaNacimiento.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        LocalDate hoy = LocalDate.now();
+        return Period.between(fechaNacimientoLocal, hoy).getYears() >= 18;
+    }
+
     @Transactional
     public Usuario saveUsuario(Usuario usuario, String nombreRol) {
+        if (!isMayorDeEdad(usuario.getFechaNacimiento())) {
+            throw new IllegalArgumentException("El usuario debe ser mayor de 18 años.");
+        }
+
         if(usuariosRepository.findByEmail(usuario.getEmail()) == null) {
             String encryptedPassword = passwordEncoder.encode(usuario.getPassword());
             usuario.setPassword(encryptedPassword);

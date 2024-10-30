@@ -18,6 +18,9 @@ export const getReclamos = async () => {
   };
 
   export const solucionarReclamo = async (idReclamo, solucion) => {
-    const response = await axios.patch(`http://localhost:8080/reclamos/solucionar/${idReclamo}`, solucion);
-    return response.data
-  }
+    console.log(`http://localhost:8080/reclamos/solucionar/${idReclamo}`, { resolucion: solucion });
+    const response = await axios.patch(`http://localhost:8080/reclamos/solucionar/${idReclamo}`, {
+        resolucion: solucion
+    });
+    return response.data;
+};

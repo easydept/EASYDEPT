@@ -241,9 +241,8 @@ const Registro = () => {
                   className="peer border border-gray-300 focus:outline-none focus:border-black w-full pt-2 pr-2 pb-2 pl-2 mt-2 text-sm block bg-white rounded-md transition duration-300 ease-in-out focus:ring-2 focus:ring-custom-green"
                 >
                   <option value="">Seleccionar rol</option>
-                  <option value="administrador">Administrador</option>
-                  <option value="enofilo">Enófilo</option>
-                  <option value="sommelier">Sommelier</option>
+                  <option value="Propietario">Propietario</option>
+                  <option value="Inquilino">Inquilino</option>
                 </select>
                 <label
                   htmlFor="rol"

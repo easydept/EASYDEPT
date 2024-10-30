@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/reclamos")
@@ -33,8 +34,9 @@ public class ReclamosController {
     @PatchMapping("/solucionar/{idReclamo}")
     public ResponseEntity<Reclamo> solucionarReclamo(
             @PathVariable Integer idReclamo,
-            @RequestBody String resolucion) {
+            @RequestBody Map<String, String> body) {
 
+        String resolucion = body.get("resolucion");
         Reclamo reclamoResuelto = reclamosService.solucionarReclamo(idReclamo, resolucion);
         return ResponseEntity.ok(reclamoResuelto);
     }
