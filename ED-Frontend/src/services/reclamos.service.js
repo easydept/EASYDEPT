@@ -12,6 +12,14 @@ export const getReclamos = async () => {
     return response.data
   };
 
+  export const getReclamosFiltrados = async (idEdificio, filtro) => {
+    const response = await axios.get(`http://localhost:8080/reclamos/edificio/${idEdificio}/filtro`, {
+      params: { filtro }
+  });
+    console.log(response.data)
+    return response.data
+  };
+
   export const postReclamo = async (reclamo) => {
     const response = await axios.post(`http://localhost:8080/reclamos`, reclamo)
     return response.data;

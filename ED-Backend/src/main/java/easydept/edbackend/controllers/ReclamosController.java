@@ -31,6 +31,13 @@ public class ReclamosController {
         return this.reclamosService.getReclamosEdificio(idEdificio);
     }
 
+    @GetMapping("/edificio/{idEdificio}/filtro")
+    public List<Reclamo> getReclamosFiltrados(
+            @PathVariable Integer idEdificio,
+            @RequestParam(required = false, defaultValue = "Todos") String filtro) {
+        return this.reclamosService.getReclamosFiltrados(idEdificio, filtro);
+    }
+
     @PatchMapping("/solucionar/{idReclamo}")
     public ResponseEntity<Reclamo> solucionarReclamo(
             @PathVariable Integer idReclamo,

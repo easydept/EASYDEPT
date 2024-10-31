@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReclamosService {
@@ -36,6 +37,23 @@ public class ReclamosService {
     public List<Reclamo> getReclamosEdificio(Integer idEdificio) {
         Edificio edificio = edificiosService.getEdificioById(idEdificio);
         return reclamosRepository.findByEdificio(edificio);
+    }
+
+    public List<Reclamo> getReclamosFiltrados(Integer idEdificio, String filtro) {
+        Edificio edificio = edificiosService.getEdificioById(idEdificio);
+        List<Reclamo> reclamos = reclamosRepository.findByEdificio(edificio);
+
+        if ("Pendientes".equals(filtro)) {
+            return reclamos.stream()
+                    .filter(reclamo -> reclamo.getResolucion() == null)
+                    .collect(Collectors.toList());
+        } else if ("Resueltos".equalsIgnoreCase(filtro)) {
+            return reclamos.stream()
+                    .filter(reclamo -> reclamo.getResolucion() != null)
+                    .collect(Collectors.toList());
+        }
+        // Si el filtro es "Todos" o cualquier otro valor, devuelve todos los reclamos
+        return reclamos;
     }
 
     public Reclamo solucionarReclamo(Integer idReclamo, String resolucion) {
